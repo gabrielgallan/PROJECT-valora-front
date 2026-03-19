@@ -21,8 +21,8 @@ export const columns: ColumnDef<Transaction>[] = [
         accessorKey: "title",
         header: "Title",
         cell: ({ row }) => {
-            const title: string = row.original.title
-            return <div className="font-medium">{title.length > 20 ? title.slice(0, 20) + "..." : title}</div>
+            const title: string = row.getValue("title")
+            return <div className="w-[24rem] truncate font-medium sm:max-w-[18rem]">{title}</div>
         },
     },
     {

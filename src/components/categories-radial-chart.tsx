@@ -41,19 +41,19 @@ export function CategoriesRadialChart({ data, month }: CategoriesRadialChartProp
     const chartConfig = generateChartConfig(data)
 
     return (
-        <Card className="flex flex-col bg-transparent h-full">
+        <Card className="flex h-full min-h-0 flex-col overflow-hidden bg-transparent py-4">
 
-            <CardHeader className="items-center pb-0">
+            <CardHeader className="items-center gap-1 px-4 pb-0">
                 <CardTitle>Savings by categories</CardTitle>
                 <CardDescription>{month}</CardDescription>
             </CardHeader>
 
-            <CardContent className="flex-1 min-h-0 flex items-center justify-center pb-0">
+            <CardContent className="flex min-h-0 flex-1 items-center justify-center px-4 pb-4">
                 <ChartContainer
                     config={chartConfig}
                     className="h-full w-full !aspect-auto"
                 >
-                    <RadialBarChart data={data} innerRadius={30} outerRadius={110}>
+                    <RadialBarChart data={data} innerRadius={40} outerRadius={120}>
                         <ChartTooltip
                             cursor={false}
                             content={<ChartTooltipContent hideLabel nameKey="category" />}

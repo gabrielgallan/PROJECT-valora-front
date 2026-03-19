@@ -1,0 +1,1489 @@
+{
+  "version": "2.9",
+  "children": [
+    {
+      "type": "frame",
+      "id": "j2iE1",
+      "x": 960,
+      "y": 0,
+      "name": "Valora SaaS Landing",
+      "width": 1440,
+      "fill": "#000000ff",
+      "layout": "vertical",
+      "gap": 24,
+      "padding": [
+        28,
+        32
+      ],
+      "children": [
+        {
+          "type": "frame",
+          "id": "8jGgI",
+          "name": "Landing Content",
+          "width": "fill_container",
+          "layout": "vertical",
+          "gap": 24,
+          "children": [
+            {
+              "type": "frame",
+              "id": "iZqZM",
+              "name": "Header",
+              "width": "fill_container",
+              "padding": [
+                4,
+                0
+              ],
+              "justifyContent": "space_between",
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "6UyZg",
+                  "name": "Brand",
+                  "gap": 10,
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "ellipse",
+                      "id": "7wsWB",
+                      "name": "brandDot",
+                      "fill": "$color-emerald-400",
+                      "width": 10,
+                      "height": 10,
+                      "effect": {
+                        "type": "shadow",
+                        "shadowType": "outer",
+                        "color": "#35D89A88",
+                        "blur": 10
+                      }
+                    },
+                    {
+                      "type": "text",
+                      "id": "qde5Z",
+                      "name": "Brand Text",
+                      "fill": "$color-emerald-300",
+                      "content": "VALORA",
+                      "fontFamily": "Space Grotesk",
+                      "fontSize": 30,
+                      "fontWeight": "700",
+                      "letterSpacing": 1
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "Uq4zS",
+                  "name": "Nav",
+                  "gap": 20,
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "w1ZBg",
+                      "name": "navL1",
+                      "fill": "$color-text-muted",
+                      "content": "Product",
+                      "fontFamily": "JetBrains Mono",
+                      "fontSize": 11,
+                      "fontWeight": "600"
+                    },
+                    {
+                      "type": "text",
+                      "id": "psUcr",
+                      "name": "navL2",
+                      "fill": "$color-text-muted",
+                      "content": "Security",
+                      "fontFamily": "JetBrains Mono",
+                      "fontSize": 11,
+                      "fontWeight": "600"
+                    },
+                    {
+                      "type": "text",
+                      "id": "JjeGx",
+                      "name": "navL3",
+                      "fill": "$color-text-muted",
+                      "content": "Pricing",
+                      "fontFamily": "JetBrains Mono",
+                      "fontSize": 11,
+                      "fontWeight": "600"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "mrOb7",
+                  "name": "Header CTA",
+                  "fill": "$color-glass",
+                  "cornerRadius": 10,
+                  "stroke": {
+                    "align": "inside",
+                    "thickness": 1,
+                    "fill": "$color-stroke-soft"
+                  },
+                  "effect": {
+                    "type": "background_blur",
+                    "radius": 8
+                  },
+                  "padding": [
+                    8,
+                    14
+                  ],
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "2LopJ",
+                      "name": "headCTATxt",
+                      "fill": "$color-emerald-300",
+                      "content": "Book demo",
+                      "fontFamily": "JetBrains Mono",
+                      "fontSize": 11,
+                      "fontWeight": "700"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "rage8",
+              "name": "Hero",
+              "width": "fill_container",
+              "gap": 24,
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "cPRZ9",
+                  "name": "Hero Left",
+                  "width": "fill_container",
+                  "layout": "vertical",
+                  "gap": 14,
+                  "padding": [
+                    12,
+                    0,
+                    0,
+                    0
+                  ],
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "QU8tp",
+                      "name": "heroEyebrow",
+                      "fill": "$color-emerald-300",
+                      "content": "FINANCIAL OPERATING SYSTEM",
+                      "fontFamily": "JetBrains Mono",
+                      "fontSize": 11,
+                      "fontWeight": "700",
+                      "letterSpacing": 1.1
+                    },
+                    {
+                      "type": "text",
+                      "id": "8LRrO",
+                      "name": "heroTitle",
+                      "fill": "$color-text-primary",
+                      "textGrowth": "fixed-width",
+                      "width": "fill_container",
+                      "content": "Control cashflow, forecast growth, and move faster with one finance workspace.",
+                      "lineHeight": 1.03,
+                      "fontFamily": "Space Grotesk",
+                      "fontSize": 58,
+                      "fontWeight": "700"
+                    },
+                    {
+                      "type": "text",
+                      "id": "c47Iv",
+                      "name": "heroDesc",
+                      "fill": "$color-text-secondary",
+                      "textGrowth": "fixed-width",
+                      "width": "fill_container",
+                      "content": "Valora combines budgeting, treasury visibility, and goal tracking so your team can make sharper money decisions every week.",
+                      "lineHeight": 1.45,
+                      "fontFamily": "Space Grotesk",
+                      "fontSize": 16,
+                      "fontWeight": "500"
+                    },
+                    {
+                      "type": "frame",
+                      "id": "LaJlO",
+                      "name": "Hero Actions",
+                      "gap": 10,
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "frame",
+                          "id": "ubgJK",
+                          "name": "heroBtn1",
+                          "fill": {
+                            "type": "gradient",
+                            "gradientType": "linear",
+                            "enabled": true,
+                            "rotation": 90,
+                            "size": {
+                              "height": 1
+                            },
+                            "colors": [
+                              {
+                                "color": "$color-emerald-500",
+                                "position": 0
+                              },
+                              {
+                                "color": "$color-emerald-600",
+                                "position": 1
+                              }
+                            ]
+                          },
+                          "cornerRadius": 10,
+                          "stroke": {
+                            "thickness": 1,
+                            "fill": "$color-stroke-strong"
+                          },
+                          "effect": {
+                            "type": "shadow",
+                            "shadowType": "outer",
+                            "color": "#1FB3777A",
+                            "offset": {
+                              "x": 0,
+                              "y": 6
+                            },
+                            "blur": 14
+                          },
+                          "padding": [
+                            11,
+                            16
+                          ],
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "opSSc",
+                              "name": "heroBtn1Txt",
+                              "fill": "#F4FFF9",
+                              "content": "Start free",
+                              "fontFamily": "JetBrains Mono",
+                              "fontSize": 12,
+                              "fontWeight": "700"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "frame",
+                          "id": "YEnTe",
+                          "name": "heroBtn2",
+                          "fill": "$color-glass",
+                          "cornerRadius": 10,
+                          "stroke": {
+                            "thickness": 1,
+                            "fill": "$color-stroke-soft"
+                          },
+                          "padding": [
+                            11,
+                            16
+                          ],
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "v80Hm",
+                              "name": "heroBtn2Txt",
+                              "fill": "$color-text-secondary",
+                              "content": "Watch demo",
+                              "fontFamily": "JetBrains Mono",
+                              "fontSize": 12,
+                              "fontWeight": "700"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "iRptn",
+                  "name": "Hero Preview",
+                  "width": "fill_container",
+                  "fill": "$color-glass",
+                  "cornerRadius": 18,
+                  "stroke": {
+                    "align": "inside",
+                    "thickness": 1,
+                    "fill": "$color-stroke-soft"
+                  },
+                  "effect": [
+                    {
+                      "type": "background_blur",
+                      "radius": 10
+                    },
+                    {
+                      "type": "shadow",
+                      "shadowType": "outer",
+                      "color": "#0E3D2A5E",
+                      "offset": {
+                        "x": 0,
+                        "y": 12
+                      },
+                      "blur": 24
+                    }
+                  ],
+                  "layout": "vertical",
+                  "gap": 12,
+                  "padding": 14,
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "ZYoIS",
+                      "name": "previewTop",
+                      "width": "fill_container",
+                      "stroke": {
+                        "align": "inside",
+                        "thickness": {
+                          "bottom": 1
+                        },
+                        "fill": "#3FAE8161"
+                      },
+                      "padding": [
+                        0,
+                        0,
+                        10,
+                        0
+                      ],
+                      "justifyContent": "space_between",
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "VNiNj",
+                          "name": "ptTitle",
+                          "fill": "$color-text-secondary",
+                          "content": "Liquidity overview",
+                          "fontFamily": "JetBrains Mono",
+                          "fontSize": 11,
+                          "fontWeight": "700"
+                        },
+                        {
+                          "type": "frame",
+                          "id": "5hoVc",
+                          "name": "liveTag",
+                          "fill": "$color-glass",
+                          "cornerRadius": 999,
+                          "stroke": {
+                            "thickness": 1,
+                            "fill": "#3ED59873"
+                          },
+                          "padding": [
+                            5,
+                            10
+                          ],
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "ziDxN",
+                              "name": "liveTxt",
+                              "fill": "$color-emerald-300",
+                              "content": "LIVE",
+                              "fontFamily": "JetBrains Mono",
+                              "fontSize": 10,
+                              "fontWeight": "700"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "VH3pC",
+                      "name": "chart",
+                      "width": "fill_container",
+                      "height": 228,
+                      "fill": "$color-glass",
+                      "cornerRadius": 14,
+                      "stroke": {
+                        "align": "inside",
+                        "thickness": 1,
+                        "fill": "#3FAE8152"
+                      },
+                      "layout": "vertical",
+                      "gap": 10,
+                      "padding": 12,
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "Dat2H",
+                          "name": "chartLabel",
+                          "fill": "$color-text-muted",
+                          "content": "Operating cash trend",
+                          "fontFamily": "JetBrains Mono",
+                          "fontSize": 10,
+                          "fontWeight": "600"
+                        },
+                        {
+                          "type": "frame",
+                          "id": "pirr9",
+                          "name": "barRow",
+                          "width": "fill_container",
+                          "height": "fill_container",
+                          "gap": 8,
+                          "alignItems": "end",
+                          "children": [
+                            {
+                              "type": "frame",
+                              "id": "Jea0V",
+                              "name": "b1",
+                              "width": "fill_container",
+                              "height": 46,
+                              "fill": "#1E473A",
+                              "cornerRadius": 8
+                            },
+                            {
+                              "type": "frame",
+                              "id": "JMeoX",
+                              "name": "b2",
+                              "width": "fill_container",
+                              "height": 74,
+                              "fill": "#255B49",
+                              "cornerRadius": 8
+                            },
+                            {
+                              "type": "frame",
+                              "id": "o1kcg",
+                              "name": "b3",
+                              "width": "fill_container",
+                              "height": 98,
+                              "fill": "#2B6F58",
+                              "cornerRadius": 8
+                            },
+                            {
+                              "type": "frame",
+                              "id": "y4HU9",
+                              "name": "b4",
+                              "width": "fill_container",
+                              "height": 64,
+                              "fill": "#2F7B61",
+                              "cornerRadius": 8
+                            },
+                            {
+                              "type": "frame",
+                              "id": "tj1Ub",
+                              "name": "b5",
+                              "width": "fill_container",
+                              "height": 108,
+                              "fill": "#3ED598",
+                              "cornerRadius": 8
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "iuiEI",
+                      "name": "miniStats",
+                      "width": "fill_container",
+                      "gap": 10,
+                      "children": [
+                        {
+                          "type": "frame",
+                          "id": "kF2th",
+                          "name": "ms1",
+                          "width": "fill_container",
+                          "fill": "$color-glass",
+                          "cornerRadius": 10,
+                          "stroke": {
+                            "thickness": 1,
+                            "fill": "#3FAE8152"
+                          },
+                          "layout": "vertical",
+                          "gap": 4,
+                          "padding": 10,
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "C9bGq",
+                              "name": "ms1T",
+                              "fill": "$color-text-muted",
+                              "content": "Burn rate",
+                              "fontFamily": "JetBrains Mono",
+                              "fontSize": 10,
+                              "fontWeight": "600"
+                            },
+                            {
+                              "type": "text",
+                              "id": "Uk55R",
+                              "name": "ms1V",
+                              "fill": "$color-text-primary",
+                              "content": "$48.2k/mo",
+                              "fontFamily": "Space Grotesk",
+                              "fontSize": 18,
+                              "fontWeight": "700"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "frame",
+                          "id": "14nfB",
+                          "name": "ms2",
+                          "width": "fill_container",
+                          "fill": "$color-glass",
+                          "cornerRadius": 10,
+                          "stroke": {
+                            "thickness": 1,
+                            "fill": "#3FAE8152"
+                          },
+                          "layout": "vertical",
+                          "gap": 4,
+                          "padding": 10,
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "OeKHw",
+                              "name": "ms2T",
+                              "fill": "$color-text-muted",
+                              "content": "Runway",
+                              "fontFamily": "JetBrains Mono",
+                              "fontSize": 10,
+                              "fontWeight": "600"
+                            },
+                            {
+                              "type": "text",
+                              "id": "N7DuM",
+                              "name": "ms2V",
+                              "fill": "$color-emerald-300",
+                              "content": "18.4 months",
+                              "fontFamily": "Space Grotesk",
+                              "fontSize": 18,
+                              "fontWeight": "700"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "eVkX8",
+              "name": "Security Section",
+              "width": "fill_container",
+              "gap": 12,
+              "padding": [
+                8,
+                0,
+                0,
+                0
+              ],
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "zGu9F",
+                  "name": "secLeft",
+                  "width": "fill_container",
+                  "layout": "vertical",
+                  "gap": 8,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "Oiirm",
+                      "name": "secTag",
+                      "fill": "$color-emerald-300",
+                      "content": "SECURITY + CONTROL",
+                      "fontFamily": "JetBrains Mono",
+                      "fontSize": 10,
+                      "fontWeight": "700",
+                      "letterSpacing": 1
+                    },
+                    {
+                      "type": "text",
+                      "id": "g5gug",
+                      "name": "secTitle",
+                      "fill": "$color-text-primary",
+                      "textGrowth": "fixed-width",
+                      "width": "fill_container",
+                      "content": "Bank-grade security with complete audit transparency.",
+                      "lineHeight": 1.12,
+                      "fontFamily": "Space Grotesk",
+                      "fontSize": 32,
+                      "fontWeight": "700"
+                    },
+                    {
+                      "type": "text",
+                      "id": "MUB6J",
+                      "name": "secDesc",
+                      "fill": "$color-text-secondary",
+                      "textGrowth": "fixed-width",
+                      "width": "fill_container",
+                      "content": "Role-based permissions, anomaly detection, and immutable logs keep every financial decision traceable and safe.",
+                      "lineHeight": 1.45,
+                      "fontFamily": "Space Grotesk",
+                      "fontSize": 14,
+                      "fontWeight": "500"
+                    },
+                    {
+                      "type": "frame",
+                      "id": "VdedT",
+                      "name": "secList",
+                      "width": "fill_container",
+                      "layout": "vertical",
+                      "gap": 6,
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "uTQcd",
+                          "name": "li1",
+                          "fill": "$color-text-muted",
+                          "content": "• SOC2-ready architecture",
+                          "fontFamily": "JetBrains Mono",
+                          "fontSize": 11,
+                          "fontWeight": "600"
+                        },
+                        {
+                          "type": "text",
+                          "id": "ZLGEr",
+                          "name": "li2",
+                          "fill": "$color-text-muted",
+                          "content": "• Encrypted data at rest and in transit",
+                          "fontFamily": "JetBrains Mono",
+                          "fontSize": 11,
+                          "fontWeight": "600"
+                        },
+                        {
+                          "type": "text",
+                          "id": "hcQMh",
+                          "name": "li3",
+                          "fill": "$color-text-muted",
+                          "content": "• Fine-grained workspace permissions",
+                          "fontFamily": "JetBrains Mono",
+                          "fontSize": 11,
+                          "fontWeight": "600"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "0iSwK",
+                  "name": "secRight",
+                  "width": "fill_container",
+                  "fill": "$color-glass",
+                  "cornerRadius": 14,
+                  "stroke": {
+                    "thickness": 1,
+                    "fill": "#4AC89270"
+                  },
+                  "effect": [
+                    {
+                      "type": "background_blur",
+                      "radius": 9
+                    },
+                    {
+                      "type": "shadow",
+                      "shadowType": "outer",
+                      "color": "#0D3E2B59",
+                      "offset": {
+                        "x": 0,
+                        "y": 8
+                      },
+                      "blur": 18
+                    }
+                  ],
+                  "layout": "vertical",
+                  "gap": 8,
+                  "padding": 14,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "akffD",
+                      "name": "srLabel",
+                      "fill": "$color-text-muted",
+                      "content": "Risk score",
+                      "fontFamily": "JetBrains Mono",
+                      "fontSize": 10,
+                      "fontWeight": "700"
+                    },
+                    {
+                      "type": "text",
+                      "id": "TekHY",
+                      "name": "srValue",
+                      "fill": "$color-emerald-300",
+                      "content": "Low / 2.1",
+                      "fontFamily": "Space Grotesk",
+                      "fontSize": 34,
+                      "fontWeight": "700"
+                    },
+                    {
+                      "type": "text",
+                      "id": "w3TWB",
+                      "name": "srSub",
+                      "fill": "$color-text-secondary",
+                      "textGrowth": "fixed-width",
+                      "width": "fill_container",
+                      "content": "Monitored in realtime across all accounts and entities.",
+                      "lineHeight": 1.45,
+                      "fontFamily": "Space Grotesk",
+                      "fontSize": 13,
+                      "fontWeight": "500"
+                    },
+                    {
+                      "type": "frame",
+                      "id": "93vhE",
+                      "name": "srChip",
+                      "fill": "$color-glass",
+                      "cornerRadius": 999,
+                      "stroke": {
+                        "thickness": 1,
+                        "fill": "#47BE8C6E"
+                      },
+                      "padding": [
+                        7,
+                        10
+                      ],
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "nVvsj",
+                          "name": "srChipTxt",
+                          "fill": "$color-emerald-300",
+                          "content": "No critical alerts",
+                          "fontFamily": "JetBrains Mono",
+                          "fontSize": 10,
+                          "fontWeight": "700"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "iEEGf",
+              "name": "Pricing Teaser",
+              "width": "fill_container",
+              "layout": "vertical",
+              "gap": 10,
+              "padding": [
+                8,
+                0,
+                0,
+                0
+              ],
+              "children": [
+                {
+                  "type": "text",
+                  "id": "piZ9l",
+                  "name": "priceTag",
+                  "fill": "$color-emerald-300",
+                  "content": "PRICING",
+                  "fontFamily": "JetBrains Mono",
+                  "fontSize": 10,
+                  "fontWeight": "700",
+                  "letterSpacing": 1
+                },
+                {
+                  "type": "text",
+                  "id": "k05qY",
+                  "name": "priceTitle",
+                  "fill": "$color-text-primary",
+                  "textGrowth": "fixed-width",
+                  "width": "fill_container",
+                  "content": "Simple plans for every finance stage.",
+                  "lineHeight": 1.12,
+                  "fontFamily": "Space Grotesk",
+                  "fontSize": 32,
+                  "fontWeight": "700"
+                },
+                {
+                  "type": "frame",
+                  "id": "CS3A9",
+                  "name": "priceRow",
+                  "width": "fill_container",
+                  "gap": 10,
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "VELTs",
+                      "name": "p1",
+                      "width": "fill_container",
+                      "fill": "$color-glass",
+                      "cornerRadius": 14,
+                      "stroke": {
+                        "thickness": 1,
+                        "fill": "#43BC8A61"
+                      },
+                      "effect": {
+                        "type": "background_blur",
+                        "radius": 7
+                      },
+                      "layout": "vertical",
+                      "gap": 6,
+                      "padding": 14,
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "Dllxj",
+                          "name": "p1Title",
+                          "fill": "$color-text-primary",
+                          "content": "Starter",
+                          "fontFamily": "Space Grotesk",
+                          "fontSize": 18,
+                          "fontWeight": "700"
+                        },
+                        {
+                          "type": "text",
+                          "id": "8RK8B",
+                          "name": "p1Price",
+                          "fill": "$color-emerald-300",
+                          "content": "$29/mo",
+                          "fontFamily": "Space Grotesk",
+                          "fontSize": 26,
+                          "fontWeight": "700"
+                        },
+                        {
+                          "type": "text",
+                          "id": "OGvy7",
+                          "name": "p1Feat",
+                          "fill": "$color-text-muted",
+                          "textGrowth": "fixed-width",
+                          "width": "fill_container",
+                          "content": "Core dashboards, budget templates, and weekly reports.",
+                          "lineHeight": 1.5,
+                          "fontFamily": "JetBrains Mono",
+                          "fontSize": 10,
+                          "fontWeight": "600"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "Aew3m",
+                      "name": "p3",
+                      "width": "fill_container",
+                      "fill": "$color-glass",
+                      "cornerRadius": 14,
+                      "stroke": {
+                        "thickness": 1,
+                        "fill": "#43BC8A61"
+                      },
+                      "effect": {
+                        "type": "background_blur",
+                        "radius": 7
+                      },
+                      "layout": "vertical",
+                      "gap": 6,
+                      "padding": 14,
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "jOaNb",
+                          "name": "p3Title",
+                          "fill": "$color-text-primary",
+                          "content": "Scale",
+                          "fontFamily": "Space Grotesk",
+                          "fontSize": 18,
+                          "fontWeight": "700"
+                        },
+                        {
+                          "type": "text",
+                          "id": "cXpUB",
+                          "name": "p3Price",
+                          "fill": "$color-emerald-300",
+                          "content": "Custom",
+                          "fontFamily": "Space Grotesk",
+                          "fontSize": 26,
+                          "fontWeight": "700"
+                        },
+                        {
+                          "type": "text",
+                          "id": "nXUmq",
+                          "name": "p3Feat",
+                          "fill": "$color-text-muted",
+                          "textGrowth": "fixed-width",
+                          "width": "fill_container",
+                          "content": "Multi-entity controls, API access, and dedicated support.",
+                          "lineHeight": 1.5,
+                          "fontFamily": "JetBrains Mono",
+                          "fontSize": 10,
+                          "fontWeight": "600"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "Vg2cA",
+                      "name": "p2",
+                      "width": "fill_container",
+                      "fill": "$color-glass",
+                      "cornerRadius": 14,
+                      "stroke": {
+                        "thickness": 1,
+                        "fill": "#5AE9AA8C"
+                      },
+                      "effect": [
+                        {
+                          "type": "background_blur",
+                          "radius": 9
+                        },
+                        {
+                          "type": "shadow",
+                          "shadowType": "outer",
+                          "color": "#1BAE7561",
+                          "offset": {
+                            "x": 0,
+                            "y": 10
+                          },
+                          "blur": 20
+                        }
+                      ],
+                      "layout": "vertical",
+                      "gap": 8,
+                      "padding": 14,
+                      "children": [
+                        {
+                          "type": "frame",
+                          "id": "zmpKc",
+                          "name": "p2Badge",
+                          "fill": "$color-glass",
+                          "cornerRadius": 999,
+                          "stroke": {
+                            "thickness": 1,
+                            "fill": "#59DEAA8A"
+                          },
+                          "padding": [
+                            5,
+                            9
+                          ],
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "6W8iX",
+                              "name": "p2BadgeTxt",
+                              "fill": "$color-emerald-300",
+                              "content": "Most popular",
+                              "fontFamily": "JetBrains Mono",
+                              "fontSize": 10,
+                              "fontWeight": "700"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "text",
+                          "id": "paxqN",
+                          "name": "p2Title",
+                          "fill": "$color-text-primary",
+                          "content": "Growth",
+                          "fontFamily": "Space Grotesk",
+                          "fontSize": 18,
+                          "fontWeight": "700"
+                        },
+                        {
+                          "type": "text",
+                          "id": "16o7N",
+                          "name": "p2Price",
+                          "fill": "$color-emerald-300",
+                          "content": "$99/mo",
+                          "fontFamily": "Space Grotesk",
+                          "fontSize": 26,
+                          "fontWeight": "700"
+                        },
+                        {
+                          "type": "text",
+                          "id": "ScyfM",
+                          "name": "p2Feat",
+                          "fill": "$color-text-muted",
+                          "textGrowth": "fixed-width",
+                          "width": "fill_container",
+                          "content": "Forecast engine, custom alerts, and team workflows.",
+                          "lineHeight": 1.5,
+                          "fontFamily": "JetBrains Mono",
+                          "fontSize": 10,
+                          "fontWeight": "600"
+                        },
+                        {
+                          "type": "frame",
+                          "id": "64llz",
+                          "name": "p2Btn",
+                          "fill": {
+                            "type": "gradient",
+                            "gradientType": "linear",
+                            "enabled": true,
+                            "rotation": 90,
+                            "size": {
+                              "height": 1
+                            },
+                            "colors": [
+                              {
+                                "color": "$color-emerald-500",
+                                "position": 0
+                              },
+                              {
+                                "color": "$color-emerald-600",
+                                "position": 1
+                              }
+                            ]
+                          },
+                          "cornerRadius": 10,
+                          "stroke": {
+                            "thickness": 1,
+                            "fill": "$color-stroke-strong"
+                          },
+                          "padding": [
+                            9,
+                            12
+                          ],
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "lCSDD",
+                              "name": "p2BtnTxt",
+                              "fill": "#F3FFF8",
+                              "content": "Get Growth",
+                              "fontFamily": "JetBrains Mono",
+                              "fontSize": 11,
+                              "fontWeight": "700"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "s1Wyq",
+              "name": "FAQ Section",
+              "width": "fill_container",
+              "layout": "vertical",
+              "gap": 8,
+              "padding": [
+                8,
+                0,
+                0,
+                0
+              ],
+              "children": [
+                {
+                  "type": "text",
+                  "id": "M3DvS",
+                  "name": "faqTag",
+                  "fill": "$color-emerald-300",
+                  "content": "FAQ",
+                  "fontFamily": "JetBrains Mono",
+                  "fontSize": 10,
+                  "fontWeight": "700",
+                  "letterSpacing": 1
+                },
+                {
+                  "type": "text",
+                  "id": "DCK5K",
+                  "name": "faqTitle",
+                  "fill": "$color-text-primary",
+                  "textGrowth": "fixed-width",
+                  "width": "fill_container",
+                  "content": "Answers before your team asks.",
+                  "lineHeight": 1.12,
+                  "fontFamily": "Space Grotesk",
+                  "fontSize": 30,
+                  "fontWeight": "700"
+                },
+                {
+                  "type": "frame",
+                  "id": "aWlUC",
+                  "name": "faq1",
+                  "width": "fill_container",
+                  "fill": "$color-glass",
+                  "cornerRadius": 12,
+                  "stroke": {
+                    "thickness": 1,
+                    "fill": "#43BC8A61"
+                  },
+                  "layout": "vertical",
+                  "gap": 4,
+                  "padding": 12,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "Kq6Bi",
+                      "name": "faq1Txt",
+                      "fill": "$color-text-secondary",
+                      "textGrowth": "fixed-width",
+                      "width": "fill_container",
+                      "content": "How fast can we onboard? Most teams go live in under a week with guided migration.",
+                      "lineHeight": 1.45,
+                      "fontFamily": "Space Grotesk",
+                      "fontSize": 14,
+                      "fontWeight": "500"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "GMwst",
+                  "name": "faq2",
+                  "width": "fill_container",
+                  "fill": "$color-glass",
+                  "cornerRadius": 12,
+                  "stroke": {
+                    "thickness": 1,
+                    "fill": "#43BC8A61"
+                  },
+                  "layout": "vertical",
+                  "gap": 4,
+                  "padding": 12,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "M4sBV",
+                      "name": "faq2Txt",
+                      "fill": "$color-text-secondary",
+                      "textGrowth": "fixed-width",
+                      "width": "fill_container",
+                      "content": "Can I connect multiple entities? Yes, Growth and Scale support multi-entity financial views.",
+                      "lineHeight": 1.45,
+                      "fontFamily": "Space Grotesk",
+                      "fontSize": 14,
+                      "fontWeight": "500"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "3Zu18",
+                  "name": "faq3",
+                  "width": "fill_container",
+                  "fill": "$color-glass",
+                  "cornerRadius": 12,
+                  "stroke": {
+                    "thickness": 1,
+                    "fill": "#43BC8A61"
+                  },
+                  "layout": "vertical",
+                  "gap": 4,
+                  "padding": 12,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "QclgZ",
+                      "name": "faq3Txt",
+                      "fill": "$color-text-secondary",
+                      "textGrowth": "fixed-width",
+                      "width": "fill_container",
+                      "content": "Do you provide migration support? Yes, our team helps import templates and map chart-of-accounts.",
+                      "lineHeight": 1.45,
+                      "fontFamily": "Space Grotesk",
+                      "fontSize": 14,
+                      "fontWeight": "500"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "caTK9",
+              "name": "Final CTA",
+              "width": "fill_container",
+              "fill": "$color-glass",
+              "cornerRadius": 16,
+              "stroke": {
+                "thickness": 1,
+                "fill": "#52D79A75"
+              },
+              "effect": [
+                {
+                  "type": "background_blur",
+                  "radius": 10
+                },
+                {
+                  "type": "shadow",
+                  "shadowType": "outer",
+                  "color": "#0E442F66",
+                  "offset": {
+                    "x": 0,
+                    "y": 10
+                  },
+                  "blur": 22
+                }
+              ],
+              "layout": "vertical",
+              "gap": 10,
+              "padding": [
+                20,
+                18
+              ],
+              "children": [
+                {
+                  "type": "text",
+                  "id": "yE6ge",
+                  "name": "ctaTag",
+                  "fill": "$color-emerald-300",
+                  "content": "READY TO OPERATE WITH SIGNAL",
+                  "fontFamily": "JetBrains Mono",
+                  "fontSize": 10,
+                  "fontWeight": "700",
+                  "letterSpacing": 1
+                },
+                {
+                  "type": "text",
+                  "id": "OZvRM",
+                  "name": "ctaTitle",
+                  "fill": "$color-text-primary",
+                  "textGrowth": "fixed-width",
+                  "width": "fill_container",
+                  "content": "Upgrade your financial decisions starting this week.",
+                  "lineHeight": 1.12,
+                  "fontFamily": "Space Grotesk",
+                  "fontSize": 36,
+                  "fontWeight": "700"
+                },
+                {
+                  "type": "text",
+                  "id": "rRBtm",
+                  "name": "ctaDesc",
+                  "fill": "$color-text-secondary",
+                  "textGrowth": "fixed-width",
+                  "width": "fill_container",
+                  "content": "Get instant clarity on spend, runway, and strategic trade-offs with Valora.",
+                  "lineHeight": 1.45,
+                  "fontFamily": "Space Grotesk",
+                  "fontSize": 15,
+                  "fontWeight": "500"
+                },
+                {
+                  "type": "frame",
+                  "id": "E9jQs",
+                  "name": "ctaActions",
+                  "gap": 10,
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "I3ZGE",
+                      "name": "ctaBtn1",
+                      "fill": {
+                        "type": "gradient",
+                        "gradientType": "linear",
+                        "enabled": true,
+                        "rotation": 90,
+                        "size": {
+                          "height": 1
+                        },
+                        "colors": [
+                          {
+                            "color": "$color-emerald-500",
+                            "position": 0
+                          },
+                          {
+                            "color": "$color-emerald-600",
+                            "position": 1
+                          }
+                        ]
+                      },
+                      "cornerRadius": 10,
+                      "stroke": {
+                        "thickness": 1,
+                        "fill": "$color-stroke-strong"
+                      },
+                      "padding": [
+                        10,
+                        14
+                      ],
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "MMlzU",
+                          "name": "ctaBtn1Txt",
+                          "fill": "#F3FFF8",
+                          "content": "Start 14-day trial",
+                          "fontFamily": "JetBrains Mono",
+                          "fontSize": 11,
+                          "fontWeight": "700"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "0NOYF",
+                      "name": "ctaBtn2",
+                      "fill": "$color-glass",
+                      "cornerRadius": 10,
+                      "stroke": {
+                        "thickness": 1,
+                        "fill": "$color-stroke-soft"
+                      },
+                      "padding": [
+                        10,
+                        14
+                      ],
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "td9mk",
+                          "name": "ctaBtn2Txt",
+                          "fill": "$color-text-secondary",
+                          "content": "Talk to sales",
+                          "fontFamily": "JetBrains Mono",
+                          "fontSize": 11,
+                          "fontWeight": "700"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "KJxEu",
+              "name": "Footer",
+              "width": "fill_container",
+              "stroke": {
+                "align": "inside",
+                "thickness": {
+                  "top": 1
+                },
+                "fill": "#4CCF9561"
+              },
+              "padding": [
+                8,
+                0
+              ],
+              "justifyContent": "space_between",
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "EbAhY",
+                  "name": "footBrand",
+                  "fill": "$color-text-muted",
+                  "content": "Valora © 2026",
+                  "fontFamily": "JetBrains Mono",
+                  "fontSize": 11,
+                  "fontWeight": "700"
+                },
+                {
+                  "type": "frame",
+                  "id": "z72rR",
+                  "name": "footLinks",
+                  "gap": 18,
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "B3Gap",
+                      "name": "fl1",
+                      "fill": "$color-text-muted",
+                      "content": "Privacy",
+                      "fontFamily": "JetBrains Mono",
+                      "fontSize": 10,
+                      "fontWeight": "600"
+                    },
+                    {
+                      "type": "text",
+                      "id": "G65g7",
+                      "name": "fl2",
+                      "fill": "$color-text-muted",
+                      "content": "Terms",
+                      "fontFamily": "JetBrains Mono",
+                      "fontSize": 10,
+                      "fontWeight": "600"
+                    },
+                    {
+                      "type": "text",
+                      "id": "YXyKm",
+                      "name": "fl3",
+                      "fill": "$color-text-muted",
+                      "content": "Status",
+                      "fontFamily": "JetBrains Mono",
+                      "fontSize": 10,
+                      "fontWeight": "600"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "variables": {
+    "color-bg-0": {
+      "type": "color",
+      "value": "#020705"
+    },
+    "color-bg-1": {
+      "type": "color",
+      "value": "#04120E"
+    },
+    "color-emerald-300": {
+      "type": "color",
+      "value": "#7BE7BB"
+    },
+    "color-emerald-400": {
+      "type": "color",
+      "value": "#3ED598"
+    },
+    "color-emerald-500": {
+      "type": "color",
+      "value": "#1FB377"
+    },
+    "color-emerald-600": {
+      "type": "color",
+      "value": "#14875A"
+    },
+    "color-glass": {
+      "type": "color",
+      "value": "#00000000"
+    },
+    "color-stroke-soft": {
+      "type": "color",
+      "value": "#49C18E4D"
+    },
+    "color-stroke-strong": {
+      "type": "color",
+      "value": "#5AE9AA80"
+    },
+    "color-text-muted": {
+      "type": "color",
+      "value": "#7FA695"
+    },
+    "color-text-primary": {
+      "type": "color",
+      "value": "#E9FFF5"
+    },
+    "color-text-secondary": {
+      "type": "color",
+      "value": "#A7CDBB"
+    },
+    "radius-lg": {
+      "type": "number",
+      "value": 18
+    },
+    "radius-md": {
+      "type": "number",
+      "value": 14
+    },
+    "radius-sm": {
+      "type": "number",
+      "value": 10
+    },
+    "space-lg": {
+      "type": "number",
+      "value": 20
+    },
+    "space-md": {
+      "type": "number",
+      "value": 14
+    },
+    "space-sm": {
+      "type": "number",
+      "value": 10
+    },
+    "space-xl": {
+      "type": "number",
+      "value": 28
+    }
+  }
+}

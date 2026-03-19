@@ -1,0 +1,940 @@
+{
+  "version": "2.9",
+  "children": [
+    {
+      "type": "frame",
+      "id": "0AnD9",
+      "x": 920,
+      "y": 0,
+      "name": "Launch UI Figma Landing",
+      "width": 1440,
+      "height": 3303,
+      "fill": "#09090bff",
+      "layout": "vertical",
+      "gap": 20,
+      "padding": [
+        24,
+        28
+      ],
+      "alignItems": "center",
+      "children": [
+        {
+          "type": "frame",
+          "id": "dujhm",
+          "name": "Hero Section",
+          "width": "fill_container",
+          "height": 1579,
+          "layout": "vertical",
+          "gap": 16,
+          "children": [
+            {
+              "type": "frame",
+              "id": "23teI",
+              "name": "main",
+              "width": "fill_container",
+              "fill": {
+                "type": "gradient",
+                "gradientType": "linear",
+                "enabled": false,
+                "rotation": 180,
+                "size": {
+                  "height": 1
+                },
+                "colors": [
+                  {
+                    "color": "#070B14CC",
+                    "position": 0
+                  },
+                  {
+                    "color": "#070B1400",
+                    "position": 0.62
+                  }
+                ]
+              },
+              "layout": "vertical",
+              "gap": 114,
+              "padding": [
+                28,
+                40,
+                64,
+                40
+              ],
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "OeMBP",
+                  "name": "nav",
+                  "width": "fill_container",
+                  "fill": {
+                    "type": "color",
+                    "color": "#0C111B",
+                    "enabled": false
+                  },
+                  "cornerRadius": 16,
+                  "stroke": {
+                    "thickness": 1
+                  },
+                  "effect": {
+                    "type": "shadow",
+                    "shadowType": "outer",
+                    "color": "#0000007d",
+                    "offset": {
+                      "x": 0,
+                      "y": 4
+                    },
+                    "blur": 20
+                  },
+                  "padding": [
+                    14,
+                    20
+                  ],
+                  "justifyContent": "space_between",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "NDEI7",
+                      "name": "brand",
+                      "gap": 10,
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "v8tyo",
+                          "name": "brandTxt",
+                          "fill": "#E5E7EB",
+                          "content": "Valora",
+                          "fontFamily": "Inter",
+                          "fontSize": 18,
+                          "fontWeight": "700"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "MGCVl",
+                      "name": "links",
+                      "gap": 24,
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "sOVLQ",
+                          "name": "link2",
+                          "fill": "#c2c4c8ff",
+                          "content": "Sign in",
+                          "fontFamily": "Inter",
+                          "fontSize": 14,
+                          "fontWeight": "500"
+                        },
+                        {
+                          "type": "frame",
+                          "id": "Em3EU",
+                          "name": "signin",
+                          "fill": "#e7e9edff",
+                          "cornerRadius": 8,
+                          "padding": [
+                            10,
+                            14
+                          ],
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "F06r5",
+                              "name": "signinTxt",
+                              "fill": "#1b1b1bff",
+                              "content": "Get Started",
+                              "fontFamily": "Inter",
+                              "fontSize": 14,
+                              "fontWeight": "600"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "CC0Um",
+                  "name": "hero",
+                  "width": 980,
+                  "height": 430,
+                  "layout": "vertical",
+                  "gap": 48,
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "UB0jN",
+                      "name": "heading",
+                      "fill": {
+                        "type": "gradient",
+                        "gradientType": "linear",
+                        "enabled": true,
+                        "rotation": 60,
+                        "size": {
+                          "height": 1
+                        },
+                        "colors": [
+                          {
+                            "color": "#a1a1aa",
+                            "position": 0
+                          },
+                          {
+                            "color": "#ffffffff",
+                            "position": 1
+                          }
+                        ]
+                      },
+                      "textGrowth": "fixed-width",
+                      "width": 1035,
+                      "content": "Give your big idea the website it deserves",
+                      "lineHeight": 1.05,
+                      "textAlign": "center",
+                      "fontFamily": "Inter",
+                      "fontSize": 96,
+                      "fontWeight": "600"
+                    },
+                    {
+                      "type": "text",
+                      "id": "nmP6J",
+                      "name": "sub",
+                      "fill": "#adb9bbff",
+                      "textGrowth": "fixed-width",
+                      "width": 605,
+                      "content": "Launch UI gives your team a polished component system, reliable patterns, and the momentum to ship faster.",
+                      "lineHeight": 1.4,
+                      "textAlign": "center",
+                      "fontFamily": "Inter",
+                      "fontSize": 20,
+                      "fontWeight": "normal"
+                    },
+                    {
+                      "type": "frame",
+                      "id": "YOxp3",
+                      "name": "ctaRow",
+                      "gap": 12,
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "frame",
+                          "id": "JzYDY",
+                          "name": "cta1",
+                          "fill": {
+                            "type": "gradient",
+                            "gradientType": "linear",
+                            "enabled": true,
+                            "rotation": 0,
+                            "size": {
+                              "height": 1
+                            },
+                            "colors": [
+                              {
+                                "color": "#adadad",
+                                "position": 0
+                              },
+                              {
+                                "color": "#ffffffff",
+                                "position": 1
+                              }
+                            ]
+                          },
+                          "cornerRadius": 8,
+                          "padding": [
+                            14,
+                            22
+                          ],
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "MM7Kd",
+                              "name": "cta1txt",
+                              "fill": "#0B1020",
+                              "content": "Start building",
+                              "fontFamily": "Inter",
+                              "fontSize": 15,
+                              "fontWeight": "600"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "frame",
+                          "id": "XvL5U",
+                          "name": "cta2",
+                          "fill": "#1e212685",
+                          "cornerRadius": 8,
+                          "stroke": {
+                            "thickness": 1,
+                            "fill": "#2A3448"
+                          },
+                          "effect": {
+                            "type": "background_blur",
+                            "radius": 10
+                          },
+                          "padding": [
+                            14,
+                            22
+                          ],
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "CDUNG",
+                              "name": "cta2txt",
+                              "fill": "#E2E8F0",
+                              "content": "GitHub",
+                              "fontFamily": "Inter",
+                              "fontSize": 15,
+                              "fontWeight": "600"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "KvlRI",
+              "layoutPosition": "absolute",
+              "x": 0,
+              "y": 432,
+              "name": "Hero Background Image",
+              "width": "fill_container(1384)",
+              "height": "fill_container(1069)",
+              "fill": {
+                "type": "image",
+                "enabled": true,
+                "url": "Mockup.png",
+                "mode": "fill"
+              }
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "omONa",
+          "name": "Second Section",
+          "width": "fill_container",
+          "height": 573,
+          "layout": "vertical",
+          "gap": 80,
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "frame",
+              "id": "UzLEi",
+              "name": "main",
+              "width": "fill_container",
+              "fill": {
+                "type": "color",
+                "color": "#070B14",
+                "enabled": false
+              },
+              "layout": "vertical",
+              "gap": 80,
+              "padding": [
+                28,
+                40,
+                64,
+                40
+              ],
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "8byr3",
+                  "name": "heading",
+                  "fill": {
+                    "type": "gradient",
+                    "gradientType": "linear",
+                    "enabled": true,
+                    "rotation": 60,
+                    "size": {
+                      "height": 1
+                    },
+                    "colors": [
+                      {
+                        "color": "#a1a1aa",
+                        "position": 0
+                      },
+                      {
+                        "color": "#ffffffff",
+                        "position": 1
+                      }
+                    ]
+                  },
+                  "textGrowth": "fixed-width",
+                  "width": 664,
+                  "content": "Everything you need. Nothing you don’t.",
+                  "lineHeight": 1.05,
+                  "textAlign": "center",
+                  "fontFamily": "Inter",
+                  "fontSize": 48,
+                  "fontWeight": "600"
+                },
+                {
+                  "type": "frame",
+                  "id": "Kqldw",
+                  "name": "hero",
+                  "gap": 48,
+                  "justifyContent": "space_between",
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "0CJSo",
+                      "name": "hero",
+                      "width": 344,
+                      "layout": "vertical",
+                      "children": [
+                        {
+                          "type": "frame",
+                          "id": "ctYVp",
+                          "name": "hero",
+                          "width": 344,
+                          "layout": "vertical",
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "Uc5wr",
+                              "name": "heading",
+                              "fill": {
+                                "type": "gradient",
+                                "gradientType": "linear",
+                                "enabled": true,
+                                "rotation": 60,
+                                "size": {
+                                  "height": 1
+                                },
+                                "colors": [
+                                  {
+                                    "color": "#a1a1aa",
+                                    "position": 0
+                                  },
+                                  {
+                                    "color": "#ffffffff",
+                                    "position": 1
+                                  }
+                                ]
+                              },
+                              "textGrowth": "fixed-width",
+                              "width": "fill_container",
+                              "content": "Accessibility first",
+                              "lineHeight": 1.05,
+                              "fontFamily": "Inter",
+                              "fontSize": 16,
+                              "fontWeight": "600"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "text",
+                          "id": "768pd",
+                          "name": "sub",
+                          "fill": "#9c9c9cff",
+                          "textGrowth": "fixed-width",
+                          "width": "fill_container",
+                          "content": "Fully WCAG 2.0 compliment, made with best a11y practices",
+                          "lineHeight": 1.4,
+                          "textAlignVertical": "middle",
+                          "fontFamily": "Inter",
+                          "fontSize": 16,
+                          "fontWeight": "normal"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "nNLZp",
+                      "name": "hero",
+                      "width": 344,
+                      "layout": "vertical",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "7ApQ9",
+                          "name": "heading",
+                          "fill": {
+                            "type": "gradient",
+                            "gradientType": "linear",
+                            "enabled": true,
+                            "rotation": 60,
+                            "size": {
+                              "height": 1
+                            },
+                            "colors": [
+                              {
+                                "color": "#a1a1aa",
+                                "position": 0
+                              },
+                              {
+                                "color": "#ffffffff",
+                                "position": 1
+                              }
+                            ]
+                          },
+                          "textGrowth": "fixed-width",
+                          "width": "fill_container",
+                          "content": "Responsive design",
+                          "lineHeight": 1.05,
+                          "fontFamily": "Inter",
+                          "fontSize": 16,
+                          "fontWeight": "600"
+                        },
+                        {
+                          "type": "text",
+                          "id": "OKR3w",
+                          "name": "sub",
+                          "fill": "#9c9c9cff",
+                          "textGrowth": "fixed-width",
+                          "width": "fill_container",
+                          "content": "Looks and works great on any device and screen size",
+                          "lineHeight": 1.4,
+                          "textAlignVertical": "middle",
+                          "fontFamily": "Inter",
+                          "fontSize": 16,
+                          "fontWeight": "normal"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "keihK",
+                      "name": "hero",
+                      "width": 344,
+                      "layout": "vertical",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "ZIbMk",
+                          "name": "heading",
+                          "fill": {
+                            "type": "gradient",
+                            "gradientType": "linear",
+                            "enabled": true,
+                            "rotation": 60,
+                            "size": {
+                              "height": 1
+                            },
+                            "colors": [
+                              {
+                                "color": "#a1a1aa",
+                                "position": 0
+                              },
+                              {
+                                "color": "#ffffffff",
+                                "position": 1
+                              }
+                            ]
+                          },
+                          "textGrowth": "fixed-width",
+                          "width": "fill_container",
+                          "content": "Light and dark mode",
+                          "lineHeight": 1.05,
+                          "fontFamily": "Inter",
+                          "fontSize": 16,
+                          "fontWeight": "600"
+                        },
+                        {
+                          "type": "text",
+                          "id": "pKAcK",
+                          "name": "sub",
+                          "fill": "#9c9c9cff",
+                          "textGrowth": "fixed-width",
+                          "width": "fill_container",
+                          "content": "Seamless switching between color schemes, 6 themes included",
+                          "lineHeight": 1.4,
+                          "textAlignVertical": "middle",
+                          "fontFamily": "Inter",
+                          "fontSize": 16,
+                          "fontWeight": "normal"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "pte1t",
+                  "name": "hero",
+                  "gap": 48,
+                  "justifyContent": "space_between",
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "uPwMj",
+                      "name": "hero",
+                      "width": 344,
+                      "layout": "vertical",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "rcl4E",
+                          "name": "heading",
+                          "fill": {
+                            "type": "gradient",
+                            "gradientType": "linear",
+                            "enabled": true,
+                            "rotation": 60,
+                            "size": {
+                              "height": 1
+                            },
+                            "colors": [
+                              {
+                                "color": "#a1a1aa",
+                                "position": 0
+                              },
+                              {
+                                "color": "#ffffffff",
+                                "position": 1
+                              }
+                            ]
+                          },
+                          "textGrowth": "fixed-width",
+                          "width": "fill_container",
+                          "content": "Accessibility first",
+                          "lineHeight": 1.05,
+                          "fontFamily": "Inter",
+                          "fontSize": 16,
+                          "fontWeight": "600"
+                        },
+                        {
+                          "type": "text",
+                          "id": "jOL2u",
+                          "name": "sub",
+                          "fill": "#9c9c9cff",
+                          "textGrowth": "fixed-width",
+                          "width": "fill_container",
+                          "content": "Fully WCAG 2.0 compliment, made with best a11y practices",
+                          "lineHeight": 1.4,
+                          "textAlignVertical": "middle",
+                          "fontFamily": "Inter",
+                          "fontSize": 16,
+                          "fontWeight": "normal"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "rR1DP",
+                      "name": "hero",
+                      "width": 344,
+                      "layout": "vertical",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "DZhCP",
+                          "name": "heading",
+                          "fill": {
+                            "type": "gradient",
+                            "gradientType": "linear",
+                            "enabled": true,
+                            "rotation": 60,
+                            "size": {
+                              "height": 1
+                            },
+                            "colors": [
+                              {
+                                "color": "#a1a1aa",
+                                "position": 0
+                              },
+                              {
+                                "color": "#ffffffff",
+                                "position": 1
+                              }
+                            ]
+                          },
+                          "textGrowth": "fixed-width",
+                          "width": "fill_container",
+                          "content": "Responsive design",
+                          "lineHeight": 1.05,
+                          "fontFamily": "Inter",
+                          "fontSize": 16,
+                          "fontWeight": "600"
+                        },
+                        {
+                          "type": "text",
+                          "id": "hhn0I",
+                          "name": "sub",
+                          "fill": "#9c9c9cff",
+                          "textGrowth": "fixed-width",
+                          "width": "fill_container",
+                          "content": "Looks and works great on any device and screen size",
+                          "lineHeight": 1.4,
+                          "textAlignVertical": "middle",
+                          "fontFamily": "Inter",
+                          "fontSize": 16,
+                          "fontWeight": "normal"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "XG3gY",
+                      "name": "hero",
+                      "width": 344,
+                      "layout": "vertical",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "ByqBX",
+                          "name": "heading",
+                          "fill": {
+                            "type": "gradient",
+                            "gradientType": "linear",
+                            "enabled": true,
+                            "rotation": 60,
+                            "size": {
+                              "height": 1
+                            },
+                            "colors": [
+                              {
+                                "color": "#a1a1aa",
+                                "position": 0
+                              },
+                              {
+                                "color": "#ffffffff",
+                                "position": 1
+                              }
+                            ]
+                          },
+                          "textGrowth": "fixed-width",
+                          "width": "fill_container",
+                          "content": "Light and dark mode",
+                          "lineHeight": 1.05,
+                          "fontFamily": "Inter",
+                          "fontSize": 16,
+                          "fontWeight": "600"
+                        },
+                        {
+                          "type": "text",
+                          "id": "em3yk",
+                          "name": "sub",
+                          "fill": "#9c9c9cff",
+                          "textGrowth": "fixed-width",
+                          "width": "fill_container",
+                          "content": "Seamless switching between color schemes, 6 themes included",
+                          "lineHeight": 1.4,
+                          "textAlignVertical": "middle",
+                          "fontFamily": "Inter",
+                          "fontSize": 16,
+                          "fontWeight": "normal"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "li4Wz",
+          "name": "Second Section",
+          "width": "fill_container",
+          "height": 1239,
+          "layout": "vertical",
+          "gap": 16,
+          "children": [
+            {
+              "type": "frame",
+              "id": "cU3ri",
+              "name": "main",
+              "width": "fill_container",
+              "fill": {
+                "type": "color",
+                "color": "#070B14",
+                "enabled": false
+              },
+              "layout": "vertical",
+              "gap": 114,
+              "padding": [
+                28,
+                40,
+                64,
+                40
+              ],
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "Po1vH",
+                  "name": "hero",
+                  "width": 980,
+                  "height": 430,
+                  "layout": "vertical",
+                  "gap": 64,
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "jXRMC",
+                      "name": "heading",
+                      "fill": {
+                        "type": "gradient",
+                        "gradientType": "linear",
+                        "enabled": true,
+                        "rotation": 60,
+                        "size": {
+                          "height": 1
+                        },
+                        "colors": [
+                          {
+                            "color": "#a1a1aa",
+                            "position": 0
+                          },
+                          {
+                            "color": "#ffffffff",
+                            "position": 1
+                          }
+                        ]
+                      },
+                      "textGrowth": "fixed-width",
+                      "width": 868,
+                      "content": "Quality you can trust. And build on.",
+                      "lineHeight": 1.05,
+                      "textAlign": "center",
+                      "fontFamily": "Inter",
+                      "fontSize": 72,
+                      "fontWeight": "600"
+                    },
+                    {
+                      "type": "text",
+                      "id": "UiPN6",
+                      "name": "sub",
+                      "fill": "#adb9bbff",
+                      "textGrowth": "fixed-width",
+                      "width": 605,
+                      "content": "You can trust that all of the designs are taking the full advantage of newest Figma’s features and that code is written following best practices out there.",
+                      "lineHeight": 1.4,
+                      "textAlign": "center",
+                      "fontFamily": "Inter",
+                      "fontSize": 20,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "pRqeq",
+              "layoutPosition": "absolute",
+              "x": 0,
+              "y": 159,
+              "name": "Second Section Bg Image",
+              "width": "fill_container(1384)",
+              "height": "fill_container(1069)",
+              "fill": {
+                "type": "image",
+                "enabled": true,
+                "url": "Rising Large.png",
+                "mode": "fill"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "fUZTW",
+      "x": 2479,
+      "y": 0,
+      "name": "Components",
+      "width": "fill_container(1384)",
+      "height": 1623,
+      "fill": "#09090b",
+      "layout": "vertical",
+      "gap": 16,
+      "padding": 20,
+      "children": [
+        {
+          "type": "frame",
+          "id": "5mevT",
+          "name": "signin",
+          "fill": "#e7e9edff",
+          "cornerRadius": 8,
+          "padding": [
+            10,
+            14
+          ],
+          "children": [
+            {
+              "type": "text",
+              "id": "P7w5j",
+              "name": "signinTxt",
+              "fill": "#1b1b1bff",
+              "content": "Get Started",
+              "fontFamily": "Inter",
+              "fontSize": 14,
+              "fontWeight": "600"
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "oG0PG",
+          "name": "signin",
+          "fill": "#e7e9edff",
+          "cornerRadius": 8,
+          "padding": [
+            10,
+            14
+          ],
+          "children": [
+            {
+              "type": "text",
+              "id": "av8IY",
+              "name": "signinTxt",
+              "fill": "#1b1b1bff",
+              "content": "Get Started",
+              "fontFamily": "Inter",
+              "fontSize": 18,
+              "fontWeight": "600"
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "e5nXv",
+          "name": "signin",
+          "fill": "#e7e9edff",
+          "cornerRadius": 8,
+          "padding": [
+            10,
+            14
+          ],
+          "children": [
+            {
+              "type": "text",
+              "id": "eRpQu",
+              "name": "signinTxt",
+              "fill": "#1b1b1bff",
+              "content": "Get Started",
+              "fontFamily": "Inter",
+              "fontSize": 22,
+              "fontWeight": "600"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "DG1Rp",
+      "x": 4007,
+      "y": 0,
+      "name": "Icons",
+      "width": "fill_container(1384)",
+      "height": 551,
+      "fill": "#09090b",
+      "layout": "vertical",
+      "gap": 16
+    }
+  ]
+}

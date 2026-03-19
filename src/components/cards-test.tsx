@@ -12,17 +12,17 @@ import {
 
 export function TestSectionCards() {
     return (
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 h-full">
+        <div className="grid h-full min-h-0 auto-rows-fr grid-cols-1 gap-3 sm:grid-cols-2">
 
             <Card
-                className="flex flex-col bg-transparent"
+                className="flex h-full min-h-0 flex-col gap-3 overflow-hidden bg-transparent py-4"
             >
-                <CardHeader>
+                <CardHeader className="gap-1 px-4">
                     <CardDescription>
                         Total Balance
                     </CardDescription>
 
-                    <CardTitle className="text-3xl font-semibold tabular-nums">
+                    <CardTitle className="text-2xl font-semibold tabular-nums xl:text-3xl">
                         $4,230.75
                     </CardTitle>
 
@@ -34,7 +34,7 @@ export function TestSectionCards() {
                     </CardAction>
                 </CardHeader>
 
-                <CardFooter className="flex-col items-start gap-1 text-sm mt-auto">
+                <CardFooter className="mt-auto flex-col items-start gap-1 px-4 text-xs text-muted-foreground sm:text-sm">
                     <div className="flex gap-2 font-medium">
                         Account growth this month
                     </div>
@@ -45,14 +45,14 @@ export function TestSectionCards() {
             </Card>
 
             <Card
-                className="flex flex-col dark:bg-transparent"
+                className="flex h-full min-h-0 flex-col gap-3 overflow-hidden bg-transparent py-4"
             >
-                <CardHeader>
+                <CardHeader className="gap-1 px-4">
                     <CardDescription>
                         Savings Rate
                     </CardDescription>
 
-                    <CardTitle className="text-3xl font-semibold tabular-nums">
+                    <CardTitle className="text-2xl font-semibold tabular-nums xl:text-3xl">
                         31%
                     </CardTitle>
 
@@ -64,7 +64,7 @@ export function TestSectionCards() {
                     </CardAction>
                 </CardHeader>
 
-                <CardFooter className="flex-col items-start gap-1 text-sm mt-auto">
+                <CardFooter className="mt-auto flex-col items-start gap-1 px-4 text-xs text-muted-foreground sm:text-sm">
                     <div className="flex gap-2 font-medium">
                         Better savings performance
                     </div>
@@ -74,11 +74,11 @@ export function TestSectionCards() {
                 </CardFooter>
             </Card>
 
-            <Card className="flex flex-col dark:bg-transparent">
-                <CardHeader>
+            <Card className="flex h-full min-h-0 flex-col gap-3 overflow-hidden bg-transparent py-4">
+                <CardHeader className="gap-1 px-4">
                     <CardDescription>Monthly Income</CardDescription>
 
-                    <CardTitle className="text-3xl font-semibold tabular-nums">
+                    <CardTitle className="text-2xl font-semibold tabular-nums xl:text-3xl">
                         $2,150.00
                     </CardTitle>
 
@@ -90,7 +90,7 @@ export function TestSectionCards() {
                     </CardAction>
                 </CardHeader>
 
-                <CardFooter className="flex-col items-start gap-1 text-sm mt-auto">
+                <CardFooter className="mt-auto flex-col items-start gap-1 px-4 text-xs text-muted-foreground sm:text-sm">
                     <div className="flex gap-2 font-medium">
                         Increased revenue
                     </div>
@@ -100,11 +100,11 @@ export function TestSectionCards() {
                 </CardFooter>
             </Card>
 
-            <Card className="flex flex-col dark:bg-transparent">
-                <CardHeader>
+            <Card className="flex h-full min-h-0 flex-col gap-3 overflow-hidden bg-transparent py-4">
+                <CardHeader className="gap-1 px-4">
                     <CardDescription>Monthly Expenses</CardDescription>
 
-                    <CardTitle className="text-3xl font-semibold tabular-nums">
+                    <CardTitle className="text-2xl font-semibold tabular-nums xl:text-3xl">
                         $1,480.20
                     </CardTitle>
 
@@ -116,7 +116,7 @@ export function TestSectionCards() {
                     </CardAction>
                 </CardHeader>
 
-                <CardFooter className="flex-col items-start gap-1 text-sm mt-auto">
+                <CardFooter className="mt-auto flex-col items-start gap-1 px-4 text-xs text-muted-foreground sm:text-sm">
                     <div className="flex gap-2 font-medium">
                         Expenses reduced
                     </div>
