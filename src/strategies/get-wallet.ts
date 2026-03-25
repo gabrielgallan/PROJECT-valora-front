@@ -1,4 +1,3 @@
-import { redirect } from "next/navigation"
 import { HTTPGetWalletInfo } from "@/http/get-wallet-info"
 import { HTTPError } from "ky"
 
@@ -9,7 +8,9 @@ export async function getWallet() {
         return response.wallet
     } catch (err) {
         if (err instanceof HTTPError && err.response.status === 404) {
-            redirect('/new')
+            return null
         }
+
+        throw err
     }
 }

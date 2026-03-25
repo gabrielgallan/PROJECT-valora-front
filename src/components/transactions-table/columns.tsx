@@ -43,7 +43,8 @@ export const columns: ColumnDef<Transaction>[] = [
         accessorKey: "date",
         header: () => <div className="text-right">Date</div>,
         cell: ({ row }) => {
-            const date: Date = row.getValue("date")
+            const rawDate: Date | string = row.getValue("date")
+            const date = rawDate instanceof Date ? rawDate : new Date(rawDate)
             return <div className="text-right">{differenceInDays(new Date(), date)} days ago</div>
         },
     },

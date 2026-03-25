@@ -5,6 +5,7 @@ import { OpenWalletForm } from "./open-wallet-form"
 
 export default async function OpenWalletPage() {
     const { user } = await currentUser()
+    
     const userName = user.name ?? "Hello"
 
     const initials = getUserInitials({

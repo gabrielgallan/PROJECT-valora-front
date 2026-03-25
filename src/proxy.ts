@@ -4,7 +4,6 @@ import { verifyToken } from "./strategies/verify-token";
 
 const publicRoutes = [
   { path: "/", whenAuthenticated: "next" },
-  { path: "/new", whenAuthenticated: "next" },
   { path: "/auth/sign-in", whenAuthenticated: "redirect" },
   { path: "/auth/sign-up", whenAuthenticated: "redirect" },
 ] as const;

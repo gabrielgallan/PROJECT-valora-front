@@ -11,6 +11,8 @@ import {
 } from "@/components/ui/card"
 import {
     ChartContainer,
+    ChartLegend,
+    ChartLegendContent,
     ChartTooltip,
     ChartTooltipContent,
     type ChartConfig,
@@ -41,7 +43,7 @@ export function CategoriesRadialChart({ data, month }: CategoriesRadialChartProp
     const chartConfig = generateChartConfig(data)
 
     return (
-        <Card className="flex h-full min-h-0 flex-col overflow-hidden bg-transparent py-4">
+        <Card className="flex h-full min-h-0 flex-col overflow-visible bg-transparent py-4">
 
             <CardHeader className="items-center gap-1 px-4 pb-0">
                 <CardTitle>Savings by categories</CardTitle>
@@ -53,7 +55,12 @@ export function CategoriesRadialChart({ data, month }: CategoriesRadialChartProp
                     config={chartConfig}
                     className="h-full w-full !aspect-auto"
                 >
-                    <RadialBarChart data={data} innerRadius={40} outerRadius={120}>
+                    <RadialBarChart
+                        data={data}
+                        innerRadius={40}
+                        outerRadius={120}
+                        margin={{ top: 0, right: 120, bottom: 0, left: 0 }}
+                    >
                         <ChartTooltip
                             cursor={false}
                             content={<ChartTooltipContent hideLabel nameKey="category" />}
@@ -63,6 +70,16 @@ export function CategoriesRadialChart({ data, month }: CategoriesRadialChartProp
 
                         <RadialBar dataKey="balance" />
 
+
+                        <ChartLegend
+                            content={
+                                <ChartLegendContent
+                                    nameKey="category"
+                                    verticalAlign="bottom"
+                                    className="flex-col items-start gap-2"
+                                />
+                            }
+                        />
                     </RadialBarChart>
                 </ChartContainer>
             </CardContent>

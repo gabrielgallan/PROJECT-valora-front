@@ -3,10 +3,8 @@ import { redirect } from "next/navigation"
 
 export default async function NewAccountLayout({
     children,
-    sheet,
 }: Readonly<{
     children: React.ReactNode
-    sheet: React.ReactNode
 }>) {
     const wallet = await getWallet()
 
@@ -15,9 +13,6 @@ export default async function NewAccountLayout({
     }
 
     return (
-        <>
-            {children}
-            {sheet}
-        </>
+        <>{children}</>
     )
 }

@@ -1,5 +1,7 @@
 "use client";
 
+import Link from "next/link";
+
 import {
   ColumnDef,
   flexRender,
@@ -8,6 +10,16 @@ import {
 } from "@tanstack/react-table";
 
 import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "../ui/card";
+import { Button } from "../ui/button";
+import { Skeleton } from "../ui/skeleton";
+import { Download, ExternalLink } from "lucide-react";
+import {
   Table,
   TableBody,
   TableCell,
@@ -15,11 +27,16 @@ import {
 } from "@/components/ui/table";
 import { cn } from "@/lib/utils";
 
-import { Card, CardDescription, CardHeader, CardTitle } from "../ui/card";
-
 interface TransactionsTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[];
   data: TData[];
+  title?: string;
+  description?: string;
+  isLoading?: boolean;
+  emptyTitle?: string;
+  emptyDescription?: string;
+  viewAllHref?: string;
+  onExportCsv?: () => void;
 }
 
 function getTransactionRowToneClass(rowData: unknown) {
@@ -43,6 +60,13 @@ function getTransactionRowToneClass(rowData: unknown) {
 export function TransactionsTable<TData, TValue>({
   columns,
   data,
+  title = "Recent transactions",
+  description = "Track your recent cash flow activity",
+  isLoading = false,
+  emptyTitle = "No results.",
+  emptyDescription,
+  viewAllHref,
+  onExportCsv,
 }: TransactionsTableProps<TData, TValue>) {
   const table = useReactTable({
     data,
@@ -53,11 +77,40 @@ export function TransactionsTable<TData, TValue>({
   return (
     <Card className="flex h-full min-h-0 flex-col bg-transparent py-0 gap-0">
       <CardHeader className="border-b p-4">
-        <CardTitle>Recent transactions</CardTitle>
-        <CardDescription>Track your recent cash flow activity</CardDescription>
+        <div className="flex items-start justify-between gap-3">
+          <div className="space-y-1">
+            <CardTitle>{title}</CardTitle>
+            <CardDescription>{description}</CardDescription>
+          </div>
+
+          <div className="flex items-center gap-1">
+            {viewAllHref ? (
+              <Button variant="ghost" size="sm" asChild>
+                <Link href={viewAllHref}>
+                  <ExternalLink data-icon="inline-start" />
+                  Ver todas
+                </Link>
+              </Button>
+            ) : null}
+
+            {onExportCsv ? (
+              <Button variant="ghost" size="sm" onClick={onExportCsv}>
+                <Download data-icon="inline-start" />
+                Exportar CSV
+              </Button>
+            ) : null}
+          </div>
+        </div>
       </CardHeader>
       <div className="min-h-0 flex-1 overflow-auto">
-        <Table>
+        {isLoading ? (
+          <CardContent className="space-y-3 p-4">
+            {Array.from({ length: 6 }).map((_, index) => (
+              <Skeleton key={index} className="h-8 w-full" />
+            ))}
+          </CardContent>
+        ) : (
+          <Table>
           {/* <TableHeader className="border-t-1">
                     {table.getHeaderGroups().map((headerGroup) => (
                         <TableRow key={headerGroup.id}>
@@ -88,49 +141,57 @@ export function TransactionsTable<TData, TValue>({
                         </TableRow>
                     ))}
                 </TableHeader> */}
-          <TableBody>
-            {table.getRowModel().rows?.length ? (
-              table.getRowModel().rows.map((row) => (
-                <TableRow
-                  key={row.id}
-                  data-state={row.getIsSelected() && "selected"}
-                  className={getTransactionRowToneClass(row.original)}
-                >
-                  {row.getVisibleCells().map((cell) => {
-                    const isTitleColumn = cell.column.id === "title";
-                    const isDateColumn = cell.column.id === "date";
-                    const isActionsColumn = cell.column.id === "actions";
+            <TableBody>
+              {table.getRowModel().rows?.length ? (
+                table.getRowModel().rows.map((row) => (
+                  <TableRow
+                    key={row.id}
+                    data-state={row.getIsSelected() && "selected"}
+                    className={getTransactionRowToneClass(row.original)}
+                  >
+                    {row.getVisibleCells().map((cell) => {
+                      const isTitleColumn = cell.column.id === "title";
+                      const isDateColumn = cell.column.id === "date";
+                      const isActionsColumn = cell.column.id === "actions";
 
-                    return (
-                      <TableCell
-                        key={cell.id}
-                        className={cn(
-                          isTitleColumn && "max-w-0",
-                          isDateColumn
-                            ? "pr-1"
-                            : isActionsColumn
-                              ? "w-[1%] pl-0 [&:last-child]:pr-2"
-                              : undefined,
-                        )}
-                      >
-                        {flexRender(
-                          cell.column.columnDef.cell,
-                          cell.getContext(),
-                        )}
-                      </TableCell>
-                    );
-                  })}
+                      return (
+                        <TableCell
+                          key={cell.id}
+                          className={cn(
+                            isTitleColumn && "max-w-0",
+                            isDateColumn
+                              ? "pr-1"
+                              : isActionsColumn
+                                ? "w-[1%] pl-0 [&:last-child]:pr-2"
+                                : undefined,
+                          )}
+                        >
+                          {flexRender(
+                            cell.column.columnDef.cell,
+                            cell.getContext(),
+                          )}
+                        </TableCell>
+                      );
+                    })}
+                  </TableRow>
+                ))
+              ) : (
+                <TableRow>
+                  <TableCell colSpan={columns.length} className="h-28 text-center">
+                    <div className="flex flex-col items-center gap-1">
+                      <p className="font-medium">{emptyTitle}</p>
+                      {emptyDescription ? (
+                        <p className="text-muted-foreground text-xs sm:text-sm">
+                          {emptyDescription}
+                        </p>
+                      ) : null}
+                    </div>
+                  </TableCell>
                 </TableRow>
-              ))
-            ) : (
-              <TableRow>
-                <TableCell colSpan={columns.length} className="h-24 text-center">
-                  No results.
-                </TableCell>
-              </TableRow>
-            )}
-          </TableBody>
-        </Table>
+              )}
+            </TableBody>
+          </Table>
+        )}
       </div>
     </Card>
   );

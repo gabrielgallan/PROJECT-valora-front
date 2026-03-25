@@ -102,7 +102,7 @@ export function MonthProgressChart({ data, month }: MonthProgressChartProps) {
             </defs>
             <Area
               dataKey="savings"
-              type="linear"
+              type="bump"
               fill="url(#fillSavings)"
               fillOpacity={0.4}
               stroke="var(--color-savings)"

@@ -68,21 +68,21 @@ export default async function DashboardPage() {
   const transactions = await getTransactions();
 
   return (
-    <div className="@container/main flex h-full min-h-0 flex-1 flex-col overflow-hidden">
-      <div className="grid min-h-0 flex-1 grid-cols-1 grid-rows-4 gap-4 p-4 md:p-6 lg:grid-cols-2 lg:grid-rows-2">
-        <section className="min-h-0 overflow-hidden">
+    <div className="@container/main flex h-full min-h-0 flex-1 flex-col">
+      <div className="grid min-h-0 flex-1 grid-cols-1 grid-rows-4 gap-4 p-4 md:p-6 lg:grid-cols-12 lg:grid-rows-2">
+        <section className="min-h-0 overflow-hidden lg:col-span-7 lg:row-start-1">
           <TestSectionCards />
         </section>
 
-        <section className="min-h-0 overflow-hidden lg:row-start-2">
+        <section className="min-h-0 overflow-hidden lg:col-span-6 lg:row-start-2">
           <MonthProgressChart data={monthProgressChartData} month="May 2026" />
         </section>
 
-        <section className="min-h-0 overflow-hidden lg:col-start-2 lg:row-start-1">
+        <section className="min-h-[320px] overflow-visible lg:col-span-5 lg:row-start-1 lg:min-h-0">
           <CategoriesRadialChart data={categoriesRadialChartData} month="May 2026" />
         </section>
 
-        <section className="min-h-0 overflow-hidden lg:col-start-2 lg:row-start-2">
+        <section className="min-h-0 overflow-hidden lg:col-span-6 lg:row-start-2">
           <TransactionsTable columns={columns} data={transactions} />
         </section>
       </div>
