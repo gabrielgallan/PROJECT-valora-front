@@ -7,7 +7,7 @@ import { Button } from "../ui/button"
 import { differenceInDays } from "date-fns"
 import { Transaction } from "@/http/types/transaction"
 
-export const columns: ColumnDef<Transaction>[] = [
+export const columns2: ColumnDef<Transaction>[] = [
     {
         accessorKey: "title",
         header: "Title",
@@ -28,6 +28,13 @@ export const columns: ColumnDef<Transaction>[] = [
             }).format(Math.abs(amount))
 
             return <div className="text-right">{`${sign} ${formattedAmount}`}</div>
+        },
+    },
+    {
+        accessorKey: "method",
+        header: () => <div className="text-right">Method</div>,
+        cell: ({ row }) => {
+            return <div className="text-right">{row.original.method}</div>
         },
     },
     {

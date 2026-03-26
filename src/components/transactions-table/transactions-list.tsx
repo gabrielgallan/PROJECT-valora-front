@@ -43,17 +43,17 @@ interface TransactionsListProps<TData, TValue> {
 }
 
 function getTransactionRowToneClass(rowData: unknown) {
-    if (!rowData || typeof rowData !== "object" || !("type" in rowData)) {
+    if (!rowData || typeof rowData !== "object" || !("operation" in rowData)) {
         return undefined;
     }
 
-    const type = rowData.type;
+    const { operation } = rowData;
 
-    // if (type === "expense") {
+    // if (operation === "expense") {
     //     return "bg-gradient-to-r from-red-500/8 via-red-500/4 to-transparent hover:from-red-500/12 hover:via-red-500/6"
     // }
 
-    if (type === "income") {
+    if (operation === "income") {
         return "bg-gradient-to-r from-cyan-500/10 via-cyan-500/4 to-transparent hover:from-cyan-500/12 hover:via-cyan-500/6";
     }
 
@@ -80,32 +80,6 @@ export function TransactionsList<TData, TValue>({
 
     return (
         <Card className="flex h-full min-h-0 flex-col bg-transparent py-0 gap-0">
-            <CardHeader className="border-b p-4">
-                <div className="flex items-start justify-between gap-3">
-                    <div className="space-y-1">
-                        <CardTitle>{title}</CardTitle>
-                        <CardDescription>{description}</CardDescription>
-                    </div>
-
-                    <div className="flex items-center gap-1">
-                        {viewAllHref ? (
-                            <Button variant="ghost" size="sm" asChild>
-                                <Link href={viewAllHref}>
-                                    <ExternalLink data-icon="inline-start" />
-                                    Ver todas
-                                </Link>
-                            </Button>
-                        ) : null}
-
-                        {onExportCsv ? (
-                            <Button variant="ghost" size="sm" onClick={onExportCsv}>
-                                <Download data-icon="inline-start" />
-                                Exportar CSV
-                            </Button>
-                        ) : null}
-                    </div>
-                </div>
-            </CardHeader>
             <div className="min-h-0 flex-1 overflow-auto">
                 {isLoading ? (
                     <CardContent className="space-y-3 p-4">
@@ -115,11 +89,11 @@ export function TransactionsList<TData, TValue>({
                     </CardContent>
                 ) : (
                     <Table>
-                        <TableHeader className="border-t-1">
+                        <TableHeader className="sticky top-0 z-10">
                             {table.getHeaderGroups().map((headerGroup) => (
                                 <TableRow key={headerGroup.id}>
                                     {headerGroup.headers.map((header) => {
-                                        const isDateColumn = header.column.id === "date"
+                                        const isDateColumn = header.column.id === "createdAt"
                                         const isActionsColumn = header.column.id === "actions"
 
                                         return (
@@ -155,7 +129,7 @@ export function TransactionsList<TData, TValue>({
                                     >
                                         {row.getVisibleCells().map((cell) => {
                                             const isTitleColumn = cell.column.id === "title";
-                                            const isDateColumn = cell.column.id === "date";
+                                            const isDateColumn = cell.column.id === "createdAt";
                                             const isActionsColumn = cell.column.id === "actions";
 
                                             return (
@@ -181,7 +155,7 @@ export function TransactionsList<TData, TValue>({
                                 ))
                             ) : (
                                 <TableRow>
-                                    <TableCell colSpan={columns.length} className="h-28 text-center">
+                                    <TableCell colSpan={columns.length} className="h-25 text-center">
                                         <div className="flex flex-col items-center gap-1">
                                             <p className="font-medium">{emptyTitle}</p>
                                             {emptyDescription ? (

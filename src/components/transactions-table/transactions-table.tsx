@@ -40,17 +40,17 @@ interface TransactionsTableProps<TData, TValue> {
 }
 
 function getTransactionRowToneClass(rowData: unknown) {
-  if (!rowData || typeof rowData !== "object" || !("type" in rowData)) {
+  if (!rowData || typeof rowData !== "object" || !("operation" in rowData)) {
     return undefined;
   }
 
-  const type = rowData.type;
+  const { operation } = rowData;
 
-  // if (type === "expense") {
+  // if (operation === "expense") {
   //     return "bg-gradient-to-r from-red-500/8 via-red-500/4 to-transparent hover:from-red-500/12 hover:via-red-500/6"
   // }
 
-  if (type === "income") {
+  if (operation === "income") {
     return "bg-gradient-to-r from-cyan-500/10 via-cyan-500/4 to-transparent hover:from-cyan-500/12 hover:via-cyan-500/6";
   }
 
@@ -111,7 +111,7 @@ export function TransactionsTable<TData, TValue>({
           </CardContent>
         ) : (
           <Table>
-          {/* <TableHeader className="border-t-1">
+            {/* <TableHeader className="border-t-1">
                     {table.getHeaderGroups().map((headerGroup) => (
                         <TableRow key={headerGroup.id}>
                             {headerGroup.headers.map((header) => {

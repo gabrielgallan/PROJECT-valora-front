@@ -1,47 +1,63 @@
 import { CategoriesRadialChart } from "@/components/categories-radial-chart";
 import { TestSectionCards } from "@/components/cards-test";
 import { MonthProgressChart } from "@/components/month-progress-chart";
-import { columns, Transaction } from "@/components/transactions-table/columns";
+import { columns } from "@/components/transactions-table/columns";
 import { TransactionsTable } from "@/components/transactions-table/transactions-table";
 import { getWallet } from "@/strategies/get-wallet";
+import { Transaction } from "@/http/types/transaction";
 
 async function getTransactions(): Promise<Transaction[]> {
   // TODO: replace mocked list with API request.
   return [
     {
-      id: "728ed52f",
-      title: "Salary",
-      amount: 1800,
-      date: new Date(2026, 2, 5),
-      type: "income",
+      id: "tx_001",
+      title: "Salário",
+      amount: 5000,
+      operation: "income",
+      description: "Pagamento mensal",
+      method: "bank_transfer",
+      category: { name: "Renda", slug: "income" },
+      createdAt: new Date("2026-03-01T09:00:00"),
     },
     {
-      id: "728ed52f",
-      title: "Julia Payment",
-      amount: 500,
-      date: new Date(2026, 2, 7),
-      type: "expense",
+      id: "tx_002",
+      title: "Supermercado",
+      amount: 320.5,
+      operation: "expense",
+      description: "Compras da semana",
+      method: "credit_card",
+      category: { name: "Alimentação", slug: "food" },
+      createdAt: new Date("2026-03-02T18:30:00"),
     },
     {
-      id: "728ed52f",
-      title: "McDonald's",
-      amount: 10,
-      date: new Date(2026, 2, 8),
-      type: "expense",
+      id: "tx_003",
+      title: "Aluguel",
+      amount: 1500,
+      operation: "expense",
+      description: null,
+      method: "pix",
+      category: { name: "Moradia", slug: "housing" },
+      createdAt: new Date("2026-03-03T10:15:00"),
     },
     {
-      id: "728ed52f",
-      title: "Freelance Work",
-      amount: 100,
-      date: new Date(2026, 2, 9),
-      type: "income",
+      id: "tx_004",
+      title: "Freelance",
+      amount: 1200,
+      operation: "income",
+      description: "Projeto backend",
+      method: "bank_transfer",
+      category: { name: "Extra", slug: "extra-income" },
+      createdAt: new Date("2026-03-05T14:00:00"),
     },
     {
-      id: "728ed52f",
-      title: "AWS Services",
-      amount: 200,
-      date: new Date(2026, 2, 10),
-      type: "expense",
+      id: "tx_005",
+      title: "Restaurante",
+      amount: 85.9,
+      operation: "expense",
+      description: "Jantar",
+      method: "debit_card",
+      category: { name: "Alimentação", slug: "food" },
+      createdAt: new Date("2026-03-06T20:10:00"),
     },
   ];
 }
