@@ -21,6 +21,8 @@ import {
     ChartTooltipContent,
     type ChartConfig,
 } from "@/components/ui/chart";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "./ui/select";
+import React from "react";
 
 export const description = "A savings current month progress chart";
 
@@ -31,7 +33,7 @@ const transactionsChartConfig = {
     },
     expense: {
         label: "Expense",
-        color: "var(--red-300)",
+        color: "var(--chart-5)",
     },
 } satisfies ChartConfig;
 
@@ -47,35 +49,75 @@ interface TransactionsChartProps {
 }
 
 const mockData = [
-    { date: "March", income: 600, expense: 49 },
-    { date: "April", income: 200, expense: 450 },
-    { date: "May", income: 749, expense: 0 },
-    { date: "June", income: 450, expense: 300 },
-    { date: "July", income: 150, expense: 650 },
-    { date: "August", income: 80, expense: 320.12 },
+    { date: "April 2025", income: 720, expense: 560 },
+    { date: "May 2025", income: 770, expense: 590 },
+    { date: "June 2025", income: 800, expense: 620 },
+    { date: "July 2025", income: 940, expense: 850 },
+    { date: "August 2025", income: 880, expense: 690 },
+    { date: "September 2025", income: 920, expense: 780 },
+    { date: "October 2025", income: 870, expense: 640 },
+    { date: "November 2025", income: 950, expense: 700 },
+    { date: "December 2025", income: 1100, expense: 980 },
+    { date: "January 2026", income: 900, expense: 720 },
+    { date: "February 2026", income: 760, expense: 610 },
+    { date: "March 2026", income: 820, expense: 540 },
 ];
 
 export function TransactionsChart({ month }: TransactionsChartProps) {
+    const [timeRange, setTimeRange] = React.useState("3")
+
+    let filteredData = mockData
+
+    if (timeRange === "6") {
+        filteredData = mockData.slice(6, 12)
+    } else if (timeRange === "3") {
+        filteredData = mockData.slice(9, 12)
+    }
+
     return (
         <Card className="flex h-full min-h-0 flex-col overflow-hidden bg-muded py-4">
-            <CardHeader className="gap-1 px-4 pb-0">
-                <CardTitle>Transactions</CardTitle>
-                <CardDescription>{month}</CardDescription>
+            <CardHeader className="flex gap-1 px-4 pb-0">
+                <div>
+                    <CardTitle>Transactions</CardTitle>
+                    <CardDescription>{month}</CardDescription>
+                </div>
+                <Select value={timeRange} onValueChange={setTimeRange}>
+                    <SelectTrigger
+                        className="bg-transparent hidden w-[160px] rounded-lg sm:ml-auto sm:flex"
+                        aria-label="Select a value"
+                    >
+                        <SelectValue placeholder="Last 3 months" />
+                    </SelectTrigger>
+                    <SelectContent className="rounded-xl">
+                        <SelectItem value="12" className="rounded-lg">
+                            Last 12 months
+                        </SelectItem>
+                        <SelectItem value="6" className="rounded-lg">
+                            Last 6 months
+                        </SelectItem>
+                        <SelectItem value="3" className="rounded-lg">
+                            Last 3 months
+                        </SelectItem>
+                    </SelectContent>
+                </Select>
             </CardHeader>
-
             <CardContent className="flex min-h-0 flex-1 px-4 pb-4">
                 <ChartContainer
                     config={transactionsChartConfig}
                     className="h-full w-full !aspect-auto"
                 >
-                    <AreaChart data={mockData}>
+                    <AreaChart data={filteredData}>
                         <CartesianGrid vertical={false} />
                         <XAxis
                             dataKey="date"
                             tickLine={false}
                             axisLine={false}
                             tickMargin={8}
-                            tickFormatter={(value) => value}
+                            tickFormatter={(value) => {
+                                const [month, year] = value.split(' ')
+
+                                return `${month.slice(0, 3)} ${year.slice(2, 4)}`
+                            }}
                             interval="preserveStartEnd"
                         />
                         <YAxis
@@ -97,14 +139,14 @@ export function TransactionsChart({ month }: TransactionsChartProps) {
                         </defs>
                         <Area
                             dataKey="expense"
-                            type="linear"
+                            type="natural"
                             fill="url(#fillExpense)"
                             fillOpacity={0.4}
                             stroke="var(--color-expense)"
                         />
                         <Area
                             dataKey="income"
-                            type="linear"
+                            type="natural"
                             fill="url(#fillIncome)"
                             fillOpacity={0.4}
                             stroke="var(--color-income)"

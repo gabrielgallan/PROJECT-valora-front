@@ -119,13 +119,13 @@ export default async function TransactionsPage() {
     <div className="@container/main flex flex-col p-4 md:p-6">
       <div className="flex flex-col">
         <section className="grid grid-cols-1 gap-4 lg:h-[20rem] lg:grid-cols-12">
-          <section className="overflow-hidden lg:col-span-7">
+          <section className="overflow-hidden lg:col-span-6">
             <div className="flex h-full flex-col rounded-xl border bg-transparent p-4">
               <h1 className="text-2xl font-semibold tracking-tight">Transactions</h1>
             </div>
           </section>
 
-          <section className="overflow-hidden lg:col-span-5">
+          <section className="overflow-hidden lg:col-span-6">
             <div className="h-full">
               <TransactionsChart month="May 2026" />
             </div>
