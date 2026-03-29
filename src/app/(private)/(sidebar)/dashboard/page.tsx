@@ -5,6 +5,7 @@ import { columns } from "@/components/transactions-table/columns";
 import { TransactionsTable } from "@/components/transactions-table/transactions-table";
 import { getWallet } from "@/strategies/get-wallet";
 import { Transaction } from "@/http/types/transaction";
+import { TransactionsList } from "@/components/transactions-table/transactions-list";
 
 async function getTransactions(): Promise<Transaction[]> {
   // TODO: replace mocked list with API request.
@@ -51,13 +52,23 @@ async function getTransactions(): Promise<Transaction[]> {
     },
     {
       id: "tx_005",
-      title: "Restaurante",
-      amount: 85.9,
+      title: "Freelance Job",
+      amount: 200,
       operation: "expense",
-      description: "Jantar",
-      method: "debit_card",
-      category: { name: "Alimentação", slug: "food" },
-      createdAt: new Date("2026-03-06T20:10:00"),
+      description: "Projeto backend",
+      method: "bank_transfer",
+      category: { name: "Extra", slug: "extra-income" },
+      createdAt: new Date("2026-03-05T14:00:00"),
+    },
+    {
+      id: "tx_006",
+      title: "Test",
+      amount: 1200,
+      operation: "income",
+      description: "Projeto backend",
+      method: "bank_transfer",
+      category: { name: "Extra", slug: "extra-income" },
+      createdAt: new Date("2026-03-05T14:00:00"),
     },
   ];
 }
@@ -84,7 +95,7 @@ export default async function DashboardPage() {
   const transactions = await getTransactions();
 
   return (
-    <div className="@container/main flex h-full min-h-0 flex-1 flex-col">
+    <div className="@container/main flex min-h-0 flex-1 flex-col">
       <div className="grid min-h-0 flex-1 grid-cols-1 grid-rows-4 gap-4 p-4 md:p-6 lg:grid-cols-12 lg:grid-rows-2">
         <section className="min-h-0 overflow-hidden lg:col-span-7 lg:row-start-1">
           <TestSectionCards />
@@ -98,8 +109,8 @@ export default async function DashboardPage() {
           <CategoriesRadialChart data={categoriesRadialChartData} month="May 2026" />
         </section>
 
-        <section className="min-h-0 overflow-hidden lg:col-span-6 lg:row-start-2">
-          <TransactionsTable columns={columns} data={transactions} />
+        <section className="min-h-0 lg:col-span-6 lg:row-start-2">
+          <TransactionsList columns={columns} data={transactions} layoutMode="fixed" />
         </section>
       </div>
     </div>

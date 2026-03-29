@@ -45,7 +45,7 @@ export function CategoriesRadialChart({ data, month }: CategoriesRadialChartProp
     return (
         <Card className="flex h-full min-h-0 flex-col overflow-visible bg-transparent py-4">
 
-            <CardHeader className="items-center gap-1 px-4 pb-0">
+            <CardHeader className="items-center gap-1 px-4 pb-0 bg-transparent">
                 <CardTitle>Savings by categories</CardTitle>
                 <CardDescription>{month}</CardDescription>
             </CardHeader>
@@ -57,9 +57,9 @@ export function CategoriesRadialChart({ data, month }: CategoriesRadialChartProp
                 >
                     <RadialBarChart
                         data={data}
-                        innerRadius={40}
-                        outerRadius={120}
-                        margin={{ top: 0, right: 120, bottom: 0, left: 0 }}
+                        innerRadius={30}
+                        outerRadius={135}
+                        margin={{ top: 0, right: 50, bottom: 0, left: 0 }}
                     >
                         <ChartTooltip
                             cursor={false}

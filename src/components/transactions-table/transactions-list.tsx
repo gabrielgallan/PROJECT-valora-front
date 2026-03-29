@@ -1,6 +1,5 @@
 "use client";
 
-import Link from "next/link";
 
 import {
     ColumnDef,
@@ -13,13 +12,8 @@ import {
 import {
     Card,
     CardContent,
-    CardDescription,
-    CardHeader,
-    CardTitle,
 } from "../ui/card";
-import { Button } from "../ui/button";
 import { Skeleton } from "../ui/skeleton";
-import { Download, ExternalLink } from "lucide-react";
 import {
     Table,
     TableBody,
@@ -33,13 +27,9 @@ import { cn } from "@/lib/utils";
 interface TransactionsListProps<TData, TValue> {
     columns: ColumnDef<TData, TValue>[];
     data: TData[];
-    title?: string;
-    description?: string;
+    layoutMode?: "fixed" | "auto";
     isLoading?: boolean;
     emptyTitle?: string;
-    emptyDescription?: string;
-    viewAllHref?: string;
-    onExportCsv?: () => void;
 }
 
 function getTransactionRowToneClass(rowData: unknown) {
@@ -62,15 +52,13 @@ function getTransactionRowToneClass(rowData: unknown) {
 
 export function TransactionsList<TData, TValue>({
     columns,
+    layoutMode = "fixed",
     data,
-    title = "Recent transactions",
-    description = "Track your recent cash flow activity",
     isLoading = false,
     emptyTitle = "No results.",
-    emptyDescription,
-    viewAllHref,
-    onExportCsv,
 }: TransactionsListProps<TData, TValue>) {
+    const isFixedLayout = layoutMode === "fixed";
+
     const table = useReactTable({
         data,
         columns,
@@ -79,98 +67,104 @@ export function TransactionsList<TData, TValue>({
     });
 
     return (
-        <Card className="flex h-full min-h-0 flex-col bg-transparent py-0 gap-0">
-            <div className="min-h-0 flex-1 overflow-auto">
-                {isLoading ? (
-                    <CardContent className="space-y-3 p-4">
-                        {Array.from({ length: 6 }).map((_, index) => (
-                            <Skeleton key={index} className="h-8 w-full" />
-                        ))}
-                    </CardContent>
-                ) : (
-                    <Table>
-                        <TableHeader className="sticky top-0 z-10">
-                            {table.getHeaderGroups().map((headerGroup) => (
-                                <TableRow key={headerGroup.id}>
-                                    {headerGroup.headers.map((header) => {
-                                        const isDateColumn = header.column.id === "createdAt"
-                                        const isActionsColumn = header.column.id === "actions"
-
-                                        return (
-                                            <TableHead
-                                                key={header.id}
-                                                className={
-                                                    isDateColumn
-                                                        ? "pr-1"
-                                                        : isActionsColumn
-                                                            ? "w-[1%] pl-0 [&:last-child]:pr-2"
-                                                            : undefined
-                                                }
-                                            >
-                                                {header.isPlaceholder
-                                                    ? null
-                                                    : flexRender(
-                                                        header.column.columnDef.header,
-                                                        header.getContext()
-                                                    )}
-                                            </TableHead>
-                                        )
-                                    })}
-                                </TableRow>
+        <section className={cn("flex flex-col", isFixedLayout && "h-full min-h-0")}>
+            <Card
+                className={cn(
+                    "flex min-h-0 flex-col gap-0 bg-transparent py-0",
+                    isFixedLayout && "min-h-0 flex-1 overflow-hidden",
+                )}
+            >
+                <div
+                    className={cn(
+                        isFixedLayout ? "min-h-0 flex-1 overflow-auto" : "overflow-visible",
+                    )}
+                >
+                    {isLoading ? (
+                        <CardContent className="space-y-3 p-4">
+                            {Array.from({ length: 6 }).map((_, index) => (
+                                <Skeleton key={index} className="h-8 w-full" />
                             ))}
-                        </TableHeader>
-                        <TableBody>
-                            {table.getRowModel().rows?.length ? (
-                                table.getRowModel().rows.map((row) => (
-                                    <TableRow
-                                        key={row.id}
-                                        data-state={row.getIsSelected() && "selected"}
-                                        className={getTransactionRowToneClass(row.original)}
-                                    >
-                                        {row.getVisibleCells().map((cell) => {
-                                            const isTitleColumn = cell.column.id === "title";
-                                            const isDateColumn = cell.column.id === "createdAt";
-                                            const isActionsColumn = cell.column.id === "actions";
+                        </CardContent>
+                    ) : (
+                        <Table>
+                            <TableHeader className="sticky top-0 z-10">
+                                {table.getHeaderGroups().map((headerGroup) => (
+                                    <TableRow key={headerGroup.id}>
+                                        {headerGroup.headers.map((header) => {
+                                            const isDateColumn = header.column.id === "createdAt"
+                                            const isActionsColumn = header.column.id === "actions"
 
                                             return (
-                                                <TableCell
-                                                    key={cell.id}
-                                                    className={cn(
-                                                        isTitleColumn && "max-w-0",
+                                                <TableHead
+                                                    key={header.id}
+                                                    className={
                                                         isDateColumn
                                                             ? "pr-1"
                                                             : isActionsColumn
                                                                 ? "w-[1%] pl-0 [&:last-child]:pr-2"
-                                                                : undefined,
-                                                    )}
+                                                                : undefined
+                                                    }
                                                 >
-                                                    {flexRender(
-                                                        cell.column.columnDef.cell,
-                                                        cell.getContext(),
-                                                    )}
-                                                </TableCell>
-                                            );
+                                                    {header.isPlaceholder
+                                                        ? null
+                                                        : flexRender(
+                                                            header.column.columnDef.header,
+                                                            header.getContext()
+                                                        )}
+                                                </TableHead>
+                                            )
                                         })}
                                     </TableRow>
-                                ))
-                            ) : (
-                                <TableRow>
-                                    <TableCell colSpan={columns.length} className="h-25 text-center">
-                                        <div className="flex flex-col items-center gap-1">
-                                            <p className="font-medium">{emptyTitle}</p>
-                                            {emptyDescription ? (
-                                                <p className="text-muted-foreground text-xs sm:text-sm">
-                                                    {emptyDescription}
-                                                </p>
-                                            ) : null}
-                                        </div>
-                                    </TableCell>
-                                </TableRow>
-                            )}
-                        </TableBody>
-                    </Table>
-                )}
-            </div>
-        </Card>
+                                ))}
+                            </TableHeader>
+                            <TableBody>
+                                {table.getRowModel().rows?.length ? (
+                                    table.getRowModel().rows.map((row) => (
+                                        <TableRow
+                                            key={row.id}
+                                            data-state={row.getIsSelected() && "selected"}
+                                            className={getTransactionRowToneClass(row.original)}
+                                        >
+                                            {row.getVisibleCells().map((cell) => {
+                                                const isTitleColumn = cell.column.id === "title";
+                                                const isDateColumn = cell.column.id === "createdAt";
+                                                const isActionsColumn = cell.column.id === "actions";
+
+                                                return (
+                                                    <TableCell
+                                                        key={cell.id}
+                                                        className={cn(
+                                                            isTitleColumn && "max-w-0",
+                                                            isDateColumn
+                                                                ? "pr-1"
+                                                                : isActionsColumn
+                                                                    ? "w-[1%] pl-0 [&:last-child]:pr-2"
+                                                                    : undefined,
+                                                        )}
+                                                    >
+                                                        {flexRender(
+                                                            cell.column.columnDef.cell,
+                                                            cell.getContext(),
+                                                        )}
+                                                    </TableCell>
+                                                );
+                                            })}
+                                        </TableRow>
+                                    ))
+                                ) : (
+                                    <TableRow>
+                                        <TableCell colSpan={columns.length} className="h-25 text-center">
+                                            <div className="flex flex-col items-center gap-1">
+                                                <p className="font-medium">{emptyTitle}</p>
+                                            </div>
+                                        </TableCell>
+                                    </TableRow>
+                                )}
+                            </TableBody>
+                        </Table>
+                    )}
+                </div>
+            </Card>
+        </section>
     );
 }

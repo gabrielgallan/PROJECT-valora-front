@@ -33,7 +33,7 @@ const transactionsChartConfig = {
     },
     expense: {
         label: "Expense",
-        color: "var(--chart-5)",
+        color: "var(--chart-3)",
     },
 } satisfies ChartConfig;
 
@@ -64,18 +64,18 @@ const mockData = [
 ];
 
 export function TransactionsChart({ month }: TransactionsChartProps) {
-    const [timeRange, setTimeRange] = React.useState("3")
+    const [timeRange, setTimeRange] = React.useState("6")
 
     let filteredData = mockData
 
-    if (timeRange === "6") {
-        filteredData = mockData.slice(6, 12)
-    } else if (timeRange === "3") {
+    if (timeRange === "3") {
         filteredData = mockData.slice(9, 12)
+    } else if (timeRange === "6") {
+        filteredData = mockData.slice(6, 12)
     }
 
     return (
-        <Card className="flex h-full min-h-0 flex-col overflow-hidden bg-muded py-4">
+        <Card className="flex h-full min-h-0 flex-col overflow-hidden bg-transparent py-4">
             <CardHeader className="flex gap-1 px-4 pb-0">
                 <div>
                     <CardTitle>Transactions</CardTitle>
@@ -84,7 +84,7 @@ export function TransactionsChart({ month }: TransactionsChartProps) {
                 <Select value={timeRange} onValueChange={setTimeRange}>
                     <SelectTrigger
                         className="bg-transparent hidden w-[160px] rounded-lg sm:ml-auto sm:flex"
-                        aria-label="Select a value"
+                        aria-label="Selnaturalect a value"
                     >
                         <SelectValue placeholder="Last 3 months" />
                     </SelectTrigger>
@@ -123,7 +123,7 @@ export function TransactionsChart({ month }: TransactionsChartProps) {
                         <YAxis
                             tickLine={false}
                             axisLine={false}
-                            tickCount={4}
+                            tickCount={5}
                         />
                         <ChartTooltip cursor={false} content={<ChartTooltipContent />} />
                         <defs>
@@ -139,14 +139,14 @@ export function TransactionsChart({ month }: TransactionsChartProps) {
                         </defs>
                         <Area
                             dataKey="expense"
-                            type="natural"
+                            type="monotone"
                             fill="url(#fillExpense)"
                             fillOpacity={0.4}
                             stroke="var(--color-expense)"
                         />
                         <Area
                             dataKey="income"
-                            type="natural"
+                            type="monotone"
                             fill="url(#fillIncome)"
                             fillOpacity={0.4}
                             stroke="var(--color-income)"
