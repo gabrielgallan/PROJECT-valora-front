@@ -140,7 +140,7 @@ export function CategoriesPageClient({ initialCategories }: CategoriesPageClient
           </section>
         </section>
 
-        <CategoriesOverviewCards overview={overview} />
+        {/* <CategoriesOverviewCards overview={overview} /> */}
 
         <section className="flex flex-col gap-4">
           {categories.length === 0 ? (

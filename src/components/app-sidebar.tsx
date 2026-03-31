@@ -2,12 +2,11 @@
 
 import {
   Icon,
-  IconArrowNarrowUpDashed,
-  IconLayoutDashboard,
+  IconChartLine,
   IconInnerShadowTop,
   IconSettings,
-  IconCash,
-  IconChartPie,
+  IconArrowsDiff,
+  IconChartPie2Filled,
   IconDatabase,
   IconReport,
   IconFileWord,
@@ -43,22 +42,22 @@ const sidebarData = {
     {
       title: "Dashboard",
       url: "/dashboard",
-      icon: IconLayoutDashboard,
+      icon: IconChartLine,
     },
+    // {
+    //   title: "Analytics",
+    //   url: "/analytics",
+    //   icon: IconHomeSearch,
+    // },
     {
-      title: "Analytics",
-      url: "/analytics",
-      icon: IconArrowNarrowUpDashed,
+      title: "Transactions",
+      url: "/transactions",
+      icon: IconArrowsDiff,
     },
     {
       title: "Categories",
       url: "/categories",
-      icon: IconChartPie,
-    },
-    {
-      title: "Transactions",
-      url: "/transactions",
-      icon: IconCash,
+      icon: IconChartPie2Filled,
     },
   ],
   secondary: [
@@ -107,7 +106,7 @@ export function AppSidebar({ user, ...props }: AppSideBarProps) {
       </SidebarHeader>
       <SidebarContent>
         <NavMain items={sidebarData.main} />
-        <NavDocuments items={sidebarData.documents} />
+        {/* <NavDocuments items={sidebarData.documents} /> */}
         <NavSecondary items={sidebarData.secondary} className="mt-auto" />
       </SidebarContent>
       <SidebarFooter>

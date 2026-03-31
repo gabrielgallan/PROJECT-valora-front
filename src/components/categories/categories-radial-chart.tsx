@@ -19,11 +19,11 @@ type CategoriesRadialChartProps = {
 }
 
 const chartColors = [
-  "var(--chart-1)",
-  "var(--chart-2)",
-  "var(--chart-3)",
-  "var(--chart-4)",
-  "var(--chart-5)",
+  "var(--theme-100)",
+  "var(--theme-200)",
+  "var(--theme-300)",
+  "var(--theme-400)",
+  "var(--theme-500)",
 ]
 
 export function CategoriesRadialChart({ data }: CategoriesRadialChartProps) {
