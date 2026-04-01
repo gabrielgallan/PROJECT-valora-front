@@ -21,6 +21,18 @@ import {
   ChartTooltipContent,
   type ChartConfig,
 } from "@/components/ui/chart";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "./ui/select";
+import React from "react";
+
+interface MonthProgressCharData {
+  date: number
+  savings: number
+}
+
+interface MonthProgressChartProps {
+  data: MonthProgressCharData[];
+  month: string;
+}
 
 export const description = "A savings current month progress chart";
 
@@ -31,20 +43,74 @@ const monthProgressChartConfig = {
   },
 } satisfies ChartConfig;
 
-interface MonthProgressChartProps {
-  data: {
-    date: string;
-    savings: number;
-  }[];
-  month: string;
-}
+const mockData = [
+  { date: "April 2025", savings: 560 },
+  { date: "May 2025", savings: 590 },
+  { date: "June 2025", savings: 620 },
+  { date: "July 2025", savings: 850 },
+  { date: "August 2025", savings: 690 },
+  { date: "September 2025", savings: 780 },
+  { date: "October 2025", savings: 640 },
+  { date: "November 2025", savings: 700 },
+  { date: "December 2025", savings: 980 },
+  { date: "January 2026", savings: 720 },
+  { date: "February 2026", savings: 610 },
+  { date: "March 2026", savings: 540 },
+];
 
-export function MonthProgressChart({ data, month }: MonthProgressChartProps) {
+export function MonthProgressChart() {
+  const [timeRange, setTimeRange] = React.useState("6")
+
+  let filteredData = mockData
+
+  if (timeRange === "3") {
+    filteredData = mockData.slice(9, 12)
+  } else if (timeRange === "6") {
+    filteredData = mockData.slice(6, 12)
+  }
+
+  function makeCardTitle(timeRange: string) {
+    switch (timeRange) {
+      case '3': return 'Last 3 months savings progress'
+      case '6': return 'Last 6 months savings progress'
+      case '12': return 'Last year savings progress'
+    }
+  }
+
+  function makeCardDescription(timeRange: string) {
+    switch (timeRange) {
+      case '3': return 'Last 3 months savings progress'
+      case '6': return 'Last 6 months savings progress'
+      case '12': return 'Last year savings progress'
+    }
+  }
+
   return (
     <Card className="flex h-full min-h-0 flex-col overflow-hidden bg-transparent py-4">
-      <CardHeader className="gap-1 px-4 pb-0">
-        <CardTitle>Month savings progress</CardTitle>
-        <CardDescription>{month}</CardDescription>
+      <CardHeader className="flex gap-1 px-4 pb-0">
+        <div className="flex flex-col gap-2">
+          <CardTitle>Savings progress</CardTitle>
+          <CardDescription>{makeCardDescription(timeRange)}</CardDescription>
+        </div>
+        <Select value={timeRange} onValueChange={setTimeRange}>
+          <SelectTrigger
+            className="bg-transparent hidden w-[160px] rounded-lg sm:ml-auto sm:flex"
+            aria-label="Selnaturalect a value"
+          >
+            <SelectValue placeholder="Last 3 months" />
+          </SelectTrigger>
+          <SelectContent className="rounded-xl">
+            <SelectItem value="12" className="rounded-lg">
+              Last 12 months
+            </SelectItem>
+            <SelectItem value="6" className="rounded-lg">
+              Last 6 months
+            </SelectItem>
+            <SelectItem value="3" className="rounded-lg">
+              Last 3 months
+            </SelectItem>
+          </SelectContent>
+        </Select>
       </CardHeader>
 
       <CardContent className="flex min-h-0 flex-1 px-4 pb-4">
@@ -52,14 +118,18 @@ export function MonthProgressChart({ data, month }: MonthProgressChartProps) {
           config={monthProgressChartConfig}
           className="h-full w-full !aspect-auto"
         >
-          <AreaChart data={data}>
+          <AreaChart data={filteredData}>
             <CartesianGrid vertical={false} />
             <XAxis
               dataKey="date"
-              tickLine={false}
-              axisLine={false}
-              tickMargin={8}
-              tickFormatter={(value) => value}
+              tickLine={true}
+              axisLine={true}
+              tickMargin={20}
+              tickFormatter={(value) => {
+                const [month, year] = value.split(' ')
+
+                return `${month.slice(0, 3)} ${year.slice(2, 4)}`
+              }}
               interval="preserveStartEnd"
             />
             <YAxis
