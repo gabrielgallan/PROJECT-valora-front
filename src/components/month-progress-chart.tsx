@@ -124,7 +124,7 @@ export function MonthProgressChart() {
               dataKey="date"
               tickLine={true}
               axisLine={true}
-              tickMargin={20}
+              tickMargin={15}
               tickFormatter={(value) => {
                 const [month, year] = value.split(' ')
 
@@ -135,7 +135,8 @@ export function MonthProgressChart() {
             <YAxis
               tickLine={false}
               axisLine={false}
-              tickCount={5}
+              tickMargin={10}
+              tickCount={7}
               orientation="left"
               width={40}
             />

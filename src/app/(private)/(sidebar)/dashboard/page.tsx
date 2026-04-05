@@ -1,6 +1,7 @@
 import { CategoriesRadialChart } from "@/components/categories-radial-chart";
 import { TestSectionCards } from "@/components/cards-test";
 import { MonthProgressChart } from "@/components/month-progress-chart";
+import { ChartPieSavingsByCategory } from "@/components/pie-chart-interative";
 
 const monthProgressChartData = [
   { date: "1 - 8 May", savings: 600 },
@@ -24,7 +25,7 @@ export default async function DashboardPage() {
   return (
     <div className="@container/main flex min-h-0 flex-1 flex-col">
       <div className="grid min-h-0 flex-1 grid-cols-1 grid-rows-4 gap-4 p-4 md:p-6 lg:grid-cols-12 lg:grid-rows-2">
-        <section className="min-h-0 overflow-hidden lg:col-span-6 lg:row-start-1">
+        <section className="min-h-0 overflow-hidden lg:col-span-7 lg:row-start-1">
           <TestSectionCards />
         </section>
 
@@ -32,13 +33,9 @@ export default async function DashboardPage() {
           <MonthProgressChart />
         </section>
 
-        <section className="min-h-[320px] overflow-visible lg:col-span-6 lg:row-start-1 lg:min-h-0">
-          <CategoriesRadialChart data={categoriesRadialChartData} month="May 2026" />
+        <section className="min-h-0 lg:col-span-5 lg:row-start-1 lg:min-h-0">
+          <ChartPieSavingsByCategory />
         </section>
-
-        {/* <section className="min-h-0 lg:col-span-6 lg:row-start-2">
-          <TransactionsList columns={columns} data={transactions} layoutMode="fixed" />
-        </section> */}
       </div>
     </div>
   );
