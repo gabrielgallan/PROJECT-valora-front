@@ -1,42 +1,95 @@
-import { CategoriesRadialChart } from "@/components/categories-radial-chart";
-import { TestSectionCards } from "@/components/cards-test";
-import { MonthProgressChart } from "@/components/month-progress-chart";
-import { ChartPieSavingsByCategory } from "@/components/pie-chart-interative";
+import { CategorySavings } from "@/components/dashboard/categories-pie-chart-int";
+import { DashboardPageClient, KPIDataSource } from "./client";
+import { SavingsChartData } from "@/components/dashboard/savings-chart-int";
+import { getYearSavingsProgress } from "@/strategies/get-year-savings-progress";
+import { getWallet } from "@/strategies/get-wallet";
+import { HTTPGetWalletInfo } from "@/http/get-wallet-info";
+import { HTTPGetYearProgress } from "@/http/get-year-progress";
+import { YearProgressMapper } from "@/strategies/mappers/year-progress-mapper";
 
-const monthProgressChartData = [
-  { date: "1 - 8 May", savings: 600 },
-  { date: "8 - 15 May", savings: 450 },
-  { date: "15 - 22 May", savings: 1000 },
-  { date: "22 - 29 May", savings: 850 },
-  { date: "29 - 31 May", savings: 0 },
-];
+// function generateSavingsChartMockData(): SavingsChartData[] {
+//   const dates = [
+//     "April 2025",
+//     "May 2025",
+//     "June 2025",
+//     "July 2025",
+//     "August 2025",
+//     "September 2025",
+//     "October 2025",
+//     "November 2025",
+//     "December 2025",
+//     "January 2026",
+//     "February 2026",
+//     "March 2026",
+//   ]
 
-const categoriesRadialChartData = [
-  { category: "salary", balance: 310, fill: "var(--theme-100)" },
-  { category: "ifood", balance: 310, fill: "var(--theme-100)" },
-  { category: "sports", balance: 200, fill: "var(--theme-200)" },
-  { category: "uber", balance: 150, fill: "var(--theme-300)" },
-  { category: "school", balance: 100, fill: "var(--theme-500)" },
-];
+//   return dates.map((date) => ({
+//     date,
+//     savings: Number((Math.random() * 600 + 400).toFixed(0)), // entre 400 e 1000
+//   }))
+// }
+
+function generateCategoriessavingsMockData(count = 1): CategorySavings[] {
+  const categories = [
+    "Food",
+    "Uber",
+    "Rent",
+    "Gym",
+    "Streaming",
+    "Shopping",
+    "Health",
+    "Travel",
+    "Education",
+    "Bills",
+  ]
+
+  return Array.from({ length: count }).map((_, index) => {
+    const name = categories[index % categories.length]
+
+    return {
+      category: name,
+      slug: name.toLowerCase(),
+      savings: Number((Math.random() * 1000 + 50).toFixed(2)),
+    }
+  })
+}
+
+// const kpiMock: KPIDataSource = {
+//     balance: {
+//       total: 12850.75,
+//     },
+//     savingRate: {
+//       value: 0.185,   // 18.5%
+//       percent: 0.185, // 18.5%
+//     },
+//     income: {
+//       total: 10000,
+//       percent: 1,     // 100%
+//     },
+//     expense: {
+//       total: 8150,
+//       percent: 0.815, // 81.5%
+//     },
+//   }
 
 export default async function DashboardPage() {
-  // await getWallet();
+  const balanceReply = await HTTPGetWalletInfo()
+  const progressReply = await HTTPGetYearProgress()
+
+  const kpiData: KPIDataSource = {
+    ...YearProgressMapper.toKpiCards(progressReply),
+    balance: {
+      total: balanceReply.wallet.balance
+    }
+  }
+
+  const datas = {
+    kpis: kpiData,
+    savingsChart: YearProgressMapper.toSavingsChart(progressReply),
+    categoriesSavings: generateCategoriessavingsMockData(),
+  }
 
   return (
-    <div className="@container/main flex min-h-0 flex-1 flex-col">
-      <div className="grid min-h-0 flex-1 grid-cols-1 grid-rows-4 gap-4 p-4 md:p-6 lg:grid-cols-12 lg:grid-rows-2">
-        <section className="min-h-0 overflow-hidden lg:col-span-7 lg:row-start-1">
-          <TestSectionCards />
-        </section>
-
-        <section className="min-h-0 overflow-hidden lg:col-span-12 lg:row-start-2">
-          <MonthProgressChart />
-        </section>
-
-        <section className="min-h-0 lg:col-span-5 lg:row-start-1 lg:min-h-0">
-          <ChartPieSavingsByCategory />
-        </section>
-      </div>
-    </div>
-  );
+    <DashboardPageClient datas={datas} />
+  )
 }

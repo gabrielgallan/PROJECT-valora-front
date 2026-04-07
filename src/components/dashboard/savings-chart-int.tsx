@@ -21,60 +21,35 @@ import {
   ChartTooltipContent,
   type ChartConfig,
 } from "@/components/ui/chart";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "./ui/select";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "../ui/select";
 import React from "react";
+import { number } from "zod";
 
-interface MonthProgressCharData {
-  date: number
-  savings: number
-}
-
-interface MonthProgressChartProps {
-  data: MonthProgressCharData[];
-  month: string;
-}
-
-export const description = "A savings current month progress chart";
-
-const monthProgressChartConfig = {
+const savingsChartConfig = {
   savings: {
     label: "Savings",
     color: "var(--theme-300)",
   },
 } satisfies ChartConfig;
 
-const mockData = [
-  { date: "April 2025", savings: 560 },
-  { date: "May 2025", savings: 590 },
-  { date: "June 2025", savings: 620 },
-  { date: "July 2025", savings: 850 },
-  { date: "August 2025", savings: 690 },
-  { date: "September 2025", savings: 780 },
-  { date: "October 2025", savings: 640 },
-  { date: "November 2025", savings: 700 },
-  { date: "December 2025", savings: 980 },
-  { date: "January 2026", savings: 720 },
-  { date: "February 2026", savings: 610 },
-  { date: "March 2026", savings: 540 },
-];
+export interface SavingsChartData {
+  date: string
+  savings: number
+}
 
-export function MonthProgressChart() {
+export interface SavingsChartInteractiveProps {
+  data: SavingsChartData[]
+}
+
+export function SavingsChartInteractive({ data }: SavingsChartInteractiveProps) {
   const [timeRange, setTimeRange] = React.useState("6")
 
-  let filteredData = mockData
+  let filteredData = data
 
   if (timeRange === "3") {
-    filteredData = mockData.slice(9, 12)
+    filteredData = data.slice(9, 12)
   } else if (timeRange === "6") {
-    filteredData = mockData.slice(6, 12)
-  }
-
-  function makeCardTitle(timeRange: string) {
-    switch (timeRange) {
-      case '3': return 'Last 3 months savings progress'
-      case '6': return 'Last 6 months savings progress'
-      case '12': return 'Last year savings progress'
-    }
+    filteredData = data.slice(6, 12)
   }
 
   function makeCardDescription(timeRange: string) {
@@ -115,7 +90,7 @@ export function MonthProgressChart() {
 
       <CardContent className="flex min-h-0 flex-1 px-4 pb-4">
         <ChartContainer
-          config={monthProgressChartConfig}
+          config={savingsChartConfig}
           className="h-full w-full !aspect-auto"
         >
           <AreaChart data={filteredData}>
@@ -168,4 +143,22 @@ export function MonthProgressChart() {
       </CardContent>
     </Card>
   );
+}
+
+const mock = {
+  balance: {
+    total: 4230.75,
+  },
+  savingRate: {
+    value: 0.31,
+    percent: 0.6
+  },
+  income: {
+    total: 2150,
+    percent: 0.12
+  },
+  expense: {
+    total: 1480.2,
+    percent: -0.04
+  }
 }

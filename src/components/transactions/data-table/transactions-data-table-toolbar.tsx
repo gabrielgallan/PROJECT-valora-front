@@ -3,7 +3,7 @@
 import { Table } from "@tanstack/react-table";
 import { ChevronDown, Plus, SlidersHorizontal, X } from "lucide-react";
 
-import { TransactionsDateRangeFilter } from "@/components/transactions-data-table/transactions-date-range-filter";
+import { TransactionsDateRangeFilter } from "@/components/transactions/data-table/transactions-date-range-filter";
 import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,

@@ -12,9 +12,9 @@ import {
   type VisibilityState,
 } from "@tanstack/react-table";
 
-import { transactionsDataTableColumns } from "@/components/transactions-data-table/transactions-data-table-columns";
-import { TransactionsDataTablePagination } from "@/components/transactions-data-table/transactions-data-table-pagination";
-import { TransactionsDataTableToolbar } from "@/components/transactions-data-table/transactions-data-table-toolbar";
+import { transactionsDataTableColumns } from "@/components/transactions/data-table/transactions-data-table-columns";
+import { TransactionsDataTablePagination } from "@/components/transactions/data-table/transactions-data-table-pagination";
+import { TransactionsDataTableToolbar } from "@/components/transactions/data-table/transactions-data-table-toolbar";
 import {
   Table,
   TableBody,
@@ -24,7 +24,7 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import { Transaction } from "@/http/types/transaction";
-import { Button } from "../ui/button";
+import { Button } from "../../ui/button";
 import { Plus } from "lucide-react";
 
 type TransactionsDataTableProps = {

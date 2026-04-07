@@ -12,8 +12,6 @@ import {
 } from "@/components/ui/card"
 import {
     ChartContainer,
-    ChartLegend,
-    ChartLegendContent,
     ChartStyle,
     ChartTooltip,
     ChartTooltipContent,
@@ -29,12 +27,13 @@ import {
 
 export const description = "A dynamic savings by categories pie chart"
 
-type SavingsCategory = {
+export type CategorySavings = {
     category: string
+    slug: string
     savings: number
 }
 
-type ChartDataItem = SavingsCategory & {
+type ChartDataItem = CategorySavings & {
     fill: string
 }
 
@@ -51,14 +50,6 @@ type CustomPieShapeProps = {
     payload?: ChartDataItem
 }
 
-const mockSavingsByCategories: SavingsCategory[] = [
-    { category: "Food", savings: 420 },
-    { category: "Uber", savings: 180 },
-    { category: "Rent", savings: 1200 },
-    { category: "Gym", savings: 95 },
-    { category: "Streaming", savings: 70 },
-]
-
 const themeColors = [
     "var(--theme-100)",
     "var(--theme-200)",
@@ -67,23 +58,14 @@ const themeColors = [
     "var(--theme-500)",
 ]
 
-function normalizeKey(value: string) {
-    return value
-        .normalize("NFD")
-        .replace(/[\u0300-\u036f]/g, "")
-        .replace(/\s+/g, "-")
-        .replace(/[^a-zA-Z0-9-]/g, "")
-        .toLowerCase()
-}
-
-function buildChartData(categories: SavingsCategory[]): ChartDataItem[] {
+function buildChartData(categories: CategorySavings[]): ChartDataItem[] {
     return categories.map((item, index) => ({
         ...item,
         fill: themeColors[index % themeColors.length],
     }))
 }
 
-function buildChartConfig(categories: SavingsCategory[]): ChartConfig {
+function buildChartConfig(categories: CategorySavings[]): ChartConfig {
     const config: ChartConfig = {
         savings: {
             label: "Savings",
@@ -91,7 +73,8 @@ function buildChartConfig(categories: SavingsCategory[]): ChartConfig {
     }
 
     categories.forEach((item, index) => {
-        const key = normalizeKey(item.category)
+        const key = item.slug
+
         config[key] = {
             label: item.category,
             color: themeColors[index % themeColors.length],
@@ -101,26 +84,17 @@ function buildChartConfig(categories: SavingsCategory[]): ChartConfig {
     return config
 }
 
-// function formatCurrency(value: number) {
-//     return new Intl.NumberFormat("en-US", {
-//         style: "currency",
-//         currency: "USD",
-//         maximumFractionDigits: 0,
-//     }).format(value)
-// }
+interface CategoriesPieChartInteractiveProps {
+    data: CategorySavings[]
+}
 
-export function ChartPieSavingsByCategory() {
+export function CategoriesPieChartInteractive({
+    data,
+}: CategoriesPieChartInteractiveProps) {
     const id = "pie-savings-by-category"
 
-    const chartData = React.useMemo(
-        () => buildChartData(mockSavingsByCategories),
-        []
-    )
-
-    const chartConfig = React.useMemo(
-        () => buildChartConfig(mockSavingsByCategories),
-        []
-    )
+    const chartData = React.useMemo(() => buildChartData(data), [data])
+    const chartConfig = React.useMemo(() => buildChartConfig(data), [data])
 
     const categories = React.useMemo(
         () => chartData.map((item) => item.category),
@@ -140,11 +114,7 @@ export function ChartPieSavingsByCategory() {
 
     const renderPieShape = React.useCallback(
         (props: CustomPieShapeProps) => {
-            const {
-                outerRadius = 0,
-                innerRadius = 0,
-                ...rest
-            } = props
+            const { outerRadius = 0, innerRadius = 0, ...rest } = props
 
             const isActive = props.payload?.category === activeCategory
 
@@ -177,7 +147,10 @@ export function ChartPieSavingsByCategory() {
     )
 
     return (
-        <Card data-chart={id} className="flex h-full min-h-0 flex-col overflow-hidden bg-transparent">
+        <Card
+            data-chart={id}
+            className="flex h-full min-h-0 flex-col overflow-hidden bg-transparent"
+        >
             <ChartStyle id={id} config={chartConfig} />
 
             <CardHeader className="flex flex-row items-center justify-between pb-0">
@@ -188,10 +161,7 @@ export function ChartPieSavingsByCategory() {
                     </CardDescription>
                 </div>
 
-                <Select
-                    value={activeCategory}
-                    onValueChange={setActiveCategory}
-                >
+                <Select value={activeCategory} onValueChange={setActiveCategory}>
                     <SelectTrigger
                         className="h-7 w-[160px] rounded-lg pl-2.5"
                         aria-label="Select category"
@@ -233,10 +203,12 @@ export function ChartPieSavingsByCategory() {
                         <ChartTooltip
                             cursor={false}
                             content={
-                                <ChartTooltipContent hideLabel
-                                    formatter={(value, name) => (
+                                <ChartTooltipContent
+                                    hideLabel
+                                    formatter={(value: number, name: string) => (
                                         <div className="flex min-w-[130px] items-center text-xs text-muted-foreground">
-                                            {chartConfig[name as keyof typeof chartConfig]?.label || name}
+                                            {chartConfig[name as keyof typeof chartConfig]?.label ||
+                                                name}
                                             <div className="ml-auto flex items-baseline gap-0.5 font-mono font-medium text-foreground tabular-nums">
                                                 ${Number(value).toFixed(2)}
                                             </div>
@@ -257,7 +229,11 @@ export function ChartPieSavingsByCategory() {
                         >
                             <Label
                                 content={({ viewBox }) => {
-                                    if (!viewBox || !("cx" in viewBox) || !("cy" in viewBox)) {
+                                    if (
+                                        !viewBox ||
+                                        !("cx" in viewBox) ||
+                                        !("cy" in viewBox)
+                                    ) {
                                         return null
                                     }
 
@@ -273,7 +249,7 @@ export function ChartPieSavingsByCategory() {
                                                 y={viewBox.cy - 5}
                                                 className="fill-foreground text-2xl font-bold"
                                             >
-                                                {(activeItem?.savings.toFixed(2) ?? 0)}
+                                                {(activeItem?.savings ?? 0).toFixed(2)}
                                             </tspan>
 
                                             <tspan

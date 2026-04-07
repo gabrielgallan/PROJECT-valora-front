@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { TransactionsChart } from "@/components/transactions-chart";
-import { TransactionsDataTable } from "@/components/transactions-data-table/transactions-data-table";
+import { TransactionsChart } from "@/components/transactions/transactions-chart";
+import { TransactionsDataTable } from "@/components/transactions/data-table/transactions-data-table";
 import { Transaction } from "@/http/types/transaction";
 import { Download, Plus, SlidersHorizontal } from "lucide-react";
 import { ChartRadialText } from "@/components/char-radial-text";
