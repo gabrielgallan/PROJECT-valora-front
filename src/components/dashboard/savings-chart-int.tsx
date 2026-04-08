@@ -23,7 +23,6 @@ import {
 } from "@/components/ui/chart";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "../ui/select";
 import React from "react";
-import { number } from "zod";
 
 const savingsChartConfig = {
   savings: {
@@ -70,7 +69,7 @@ export function SavingsChartInteractive({ data }: SavingsChartInteractiveProps) 
         <Select value={timeRange} onValueChange={setTimeRange}>
           <SelectTrigger
             className="bg-transparent hidden w-[160px] rounded-lg sm:ml-auto sm:flex"
-            aria-label="Selnaturalect a value"
+            aria-label="Select time range"
           >
             <SelectValue placeholder="Last 3 months" />
           </SelectTrigger>

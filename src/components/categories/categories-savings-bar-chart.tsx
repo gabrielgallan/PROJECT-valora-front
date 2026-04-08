@@ -13,11 +13,17 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from ".
 import { useState } from "react"
 
 const categoriesSavingsChartConfig = {
-  savings: {
-    label: "Savings",
+  metric: {
+    label: "Amount",
     color: "var(--theme-100)",
   },
 } satisfies ChartConfig
+
+type DataType = "expenses" | "incomes" | "savings"
+
+function isDataType(value: string): value is DataType {
+  return value === "expenses" || value === "incomes" || value === "savings"
+}
 
 export interface CategorySavingsDatum {
   category: string
@@ -32,7 +38,13 @@ interface CategoriesSavingsBarChartProps {
 }
 
 export function CategoriesSavingsBarChart({ month, data }: CategoriesSavingsBarChartProps) {
-  const [dataType, setDataType] = useState<'expenses' | 'incomes' | 'savings'>("expenses")
+  const [dataType, setDataType] = useState<DataType>("expenses")
+
+  const handleDataTypeChange = (value: string) => {
+    if (isDataType(value)) {
+      setDataType(value)
+    }
+  }
 
   const formatted = data.map(c => {
     return {
@@ -51,10 +63,10 @@ export function CategoriesSavingsBarChart({ month, data }: CategoriesSavingsBarC
           <CardDescription>{month}</CardDescription>
         </div>
 
-        <Select value={dataType} onValueChange={setDataType}>
+        <Select value={dataType} onValueChange={handleDataTypeChange}>
           <SelectTrigger
-            className="bg-transparent hidden w-[160px] rounded-lg sm:ml-auto sm:flex"
-            aria-label="Selnaturalect a value"
+            className="bg-transparent w-[160px] rounded-lg sm:ml-auto"
+            aria-label="Select metric"
           >
             <SelectValue placeholder="Expenses" />
           </SelectTrigger>

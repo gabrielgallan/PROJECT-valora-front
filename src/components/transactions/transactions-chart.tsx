@@ -84,7 +84,7 @@ export function TransactionsChart({ month }: TransactionsChartProps) {
                 <Select value={timeRange} onValueChange={setTimeRange}>
                     <SelectTrigger
                         className="bg-transparent hidden w-[160px] rounded-lg sm:ml-auto sm:flex"
-                        aria-label="Selnaturalect a value"
+                        aria-label="Select time range"
                     >
                         <SelectValue placeholder="Last 3 months" />
                     </SelectTrigger>
@@ -128,7 +128,7 @@ export function TransactionsChart({ month }: TransactionsChartProps) {
                             width={40}
                         />
                         <ChartTooltip cursor={false} content={<ChartTooltipContent />} />
-                        {/* <defs>
+                        <defs>
                             <linearGradient id="fillExpense" x1="0" y1="0" x2="0" y2="1">
                                 <stop offset="5%" stopColor="var(--color-expense)" stopOpacity={0.8} />
                                 <stop offset="95%" stopColor="var(--color-expense)" stopOpacity={0.1} />
@@ -138,7 +138,7 @@ export function TransactionsChart({ month }: TransactionsChartProps) {
                                 <stop offset="5%" stopColor="var(--color-income)" stopOpacity={0.8} />
                                 <stop offset="95%" stopColor="var(--color-income)" stopOpacity={0.1} />
                             </linearGradient>
-                        </defs> */}
+                        </defs>
                         <Area
                             dataKey="expense"
                             type="monotone"
