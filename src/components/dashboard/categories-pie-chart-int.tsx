@@ -27,13 +27,13 @@ import {
 
 export const description = "A dynamic savings by categories pie chart"
 
-export type CategorySavings = {
+export type CategoryMetrics = {
     category: string
     slug: string
-    savings: number
+    expenses: number
 }
 
-type ChartDataItem = CategorySavings & {
+type ChartDataItem = CategoryMetrics & {
     fill: string
 }
 
@@ -58,17 +58,17 @@ const themeColors = [
     "var(--theme-500)",
 ]
 
-function buildChartData(categories: CategorySavings[]): ChartDataItem[] {
+function buildChartData(categories: CategoryMetrics[]): ChartDataItem[] {
     return categories.map((item, index) => ({
         ...item,
         fill: themeColors[index % themeColors.length],
     }))
 }
 
-function buildChartConfig(categories: CategorySavings[]): ChartConfig {
+function buildChartConfig(categories: CategoryMetrics[]): ChartConfig {
     const config: ChartConfig = {
-        savings: {
-            label: "Savings",
+        expenses: {
+            label: "Expenses",
         },
     }
 
@@ -85,7 +85,7 @@ function buildChartConfig(categories: CategorySavings[]): ChartConfig {
 }
 
 interface CategoriesPieChartInteractiveProps {
-    data: CategorySavings[]
+    data: CategoryMetrics[]
 }
 
 export function CategoriesPieChartInteractive({
@@ -155,9 +155,9 @@ export function CategoriesPieChartInteractive({
 
             <CardHeader className="flex flex-row items-center justify-between pb-0">
                 <div className="grid gap-1">
-                    <CardTitle>Savings by Categories</CardTitle>
+                    <CardTitle>Expenses by Categories</CardTitle>
                     <CardDescription>
-                        Distribution of savings across user categories
+                        Distribution of expenses across user categories
                     </CardDescription>
                 </div>
 
@@ -220,7 +220,7 @@ export function CategoriesPieChartInteractive({
 
                         <Pie
                             data={chartData}
-                            dataKey="savings"
+                            dataKey="expenses"
                             nameKey="category"
                             innerRadius={60}
                             outerRadius={120}
@@ -249,7 +249,7 @@ export function CategoriesPieChartInteractive({
                                                 y={viewBox.cy - 5}
                                                 className="fill-foreground text-2xl font-bold"
                                             >
-                                                {(activeItem?.savings ?? 0).toFixed(2)}
+                                                {(activeItem?.expenses ?? 0).toFixed(2)}
                                             </tspan>
 
                                             <tspan

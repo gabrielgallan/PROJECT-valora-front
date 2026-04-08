@@ -1,9 +1,9 @@
 "use client"
 
 import type { Table } from "@tanstack/react-table"
-import { ChevronDown, Plus, SlidersHorizontal, X } from "lucide-react"
+import { ChevronDown, SlidersHorizontal, X } from "lucide-react"
 
-import type { Category, CategoryStatus } from "@/components/categories/types"
+import type { CategoryTableRow } from "@/components/categories/categories-data-table/categories-data-table"
 import { Button } from "@/components/ui/button"
 import {
   DropdownMenu,
@@ -12,28 +12,21 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
 import { Input } from "@/components/ui/input"
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 
 type CategoriesDataTableToolbarProps = {
-  table: Table<Category>
+  table: Table<CategoryTableRow>
   search: string
-  status: "all" | CategoryStatus
   onSearchChange: (search: string) => void
-  onStatusChange: (status: "all" | CategoryStatus) => void
   onResetFilters: () => void
-  onCreateClick: () => void
 }
 
 export function CategoriesDataTableToolbar({
   table,
   search,
-  status,
   onSearchChange,
-  onStatusChange,
   onResetFilters,
-  onCreateClick,
 }: CategoriesDataTableToolbarProps) {
-  const hasActiveFilters = search.trim().length > 0 || status !== "all"
+  const hasActiveFilters = search.trim().length > 0
 
   return (
     <div className="flex flex-col gap-2 lg:flex-row lg:items-center lg:justify-between">
@@ -41,40 +34,24 @@ export function CategoriesDataTableToolbar({
         <Input
           value={search}
           onChange={(event) => onSearchChange(event.target.value)}
-          placeholder="Buscar por nome ou slug"
+          placeholder="Search by name or slug"
           className="h-9 min-w-[220px] max-w-[320px]"
         />
 
-        <Select value={status} onValueChange={(value) => onStatusChange(value as "all" | CategoryStatus)}>
-          <SelectTrigger className="h-9 w-[170px] shrink-0 bg-transparent dark:bg-transparent">
-            <SelectValue placeholder="Status" />
-          </SelectTrigger>
-          <SelectContent align="start">
-            <SelectItem value="all">Todos os status</SelectItem>
-            <SelectItem value="active">Ativas</SelectItem>
-            <SelectItem value="inactive">Inativas</SelectItem>
-          </SelectContent>
-        </Select>
-
         {hasActiveFilters ? (
           <Button variant="ghost" onClick={onResetFilters} className="h-9 px-2 lg:px-3">
-            Resetar
+            Reset
             <X data-icon="inline-end" />
           </Button>
         ) : null}
       </div>
 
       <div className="flex flex-wrap items-center justify-end gap-2">
-        <Button variant="outline" className="h-9 bg-transparent dark:bg-transparent" onClick={onCreateClick}>
-          <Plus data-icon="inline-start" />
-          Criar rapido
-        </Button>
-
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
             <Button variant="outline" className="h-9 bg-transparent dark:bg-transparent">
               <SlidersHorizontal data-icon="inline-start" />
-              Colunas
+              Columns
               <ChevronDown data-icon="inline-end" />
             </Button>
           </DropdownMenuTrigger>

@@ -15,37 +15,29 @@ import {
 import { categoriesDataTableColumns } from "@/components/categories/categories-data-table/categories-data-table-columns"
 import { CategoriesDataTablePagination } from "@/components/categories/categories-data-table/categories-data-table-pagination"
 import { CategoriesDataTableToolbar } from "@/components/categories/categories-data-table/categories-data-table-toolbar"
-import type { Category, CategoryStatus } from "@/components/categories/types"
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table"
 
-type CategoriesDataTableProps = {
-  data: Category[]
-  onCreateClick: () => void
-  onEdit: (category: Category) => void
-  onToggleStatus: (id: string, status: CategoryStatus) => void
-  onRequestDelete: (category: Category) => void
+export interface CategoryTableRow {
+  id: string
+  name: string
+  slug: string
+  usageCount: number
+  updatedAt: Date | string
 }
 
-export function CategoriesDataTable({
-  data,
-  onCreateClick,
-  onEdit,
-  onToggleStatus,
-  onRequestDelete,
-}: CategoriesDataTableProps) {
+type CategoriesDataTableProps = {
+  data: CategoryTableRow[]
+}
+
+export function CategoriesDataTable({ data }: CategoriesDataTableProps) {
   const [sorting, setSorting] = React.useState<SortingState>([])
   const [columnVisibility, setColumnVisibility] = React.useState<VisibilityState>({})
   const [search, setSearch] = React.useState("")
-  const [status, setStatus] = React.useState<"all" | CategoryStatus>("all")
 
   const filteredData = React.useMemo(() => {
     const normalizedSearch = search.trim().toLowerCase()
 
     return data.filter((category) => {
-      if (status !== "all" && category.status !== status) {
-        return false
-      }
-
       if (!normalizedSearch) {
         return true
       }
@@ -55,12 +47,9 @@ export function CategoriesDataTable({
         category.slug.toLowerCase().includes(normalizedSearch)
       )
     })
-  }, [data, search, status])
+  }, [data, search])
 
-  const columns = React.useMemo(
-    () => categoriesDataTableColumns({ onEdit, onToggleStatus, onRequestDelete }),
-    [onEdit, onRequestDelete, onToggleStatus]
-  )
+  const columns = React.useMemo(() => categoriesDataTableColumns(), [])
 
   const table = useReactTable({
     data: filteredData,
@@ -84,7 +73,6 @@ export function CategoriesDataTable({
 
   const handleResetFilters = () => {
     setSearch("")
-    setStatus("all")
   }
 
   return (
@@ -92,11 +80,8 @@ export function CategoriesDataTable({
       <CategoriesDataTableToolbar
         table={table}
         search={search}
-        status={status}
         onSearchChange={setSearch}
-        onStatusChange={setStatus}
         onResetFilters={handleResetFilters}
-        onCreateClick={onCreateClick}
       />
 
       <div className="overflow-hidden rounded-md border">
@@ -129,7 +114,7 @@ export function CategoriesDataTable({
             ) : (
               <TableRow>
                 <TableCell colSpan={table.getVisibleLeafColumns().length} className="h-24 text-center">
-                  Nenhum resultado para os filtros atuais.
+                  No results found for the current filters.
                 </TableCell>
               </TableRow>
             )}

@@ -3,7 +3,6 @@
 import * as React from "react"
 import { Pie, PieChart } from "recharts"
 
-import type { Category } from "@/components/categories/types"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import {
   ChartContainer,
@@ -15,7 +14,13 @@ import {
 } from "@/components/ui/chart"
 
 type CategoriesRadialChartProps = {
-  data: Category[]
+  data: CategoriesRadialChartDatum[]
+}
+
+export interface CategoriesRadialChartDatum {
+  name: string
+  slug: string
+  usageCount: number
 }
 
 const chartColors = [
@@ -53,24 +58,27 @@ export function CategoriesRadialChart({ data }: CategoriesRadialChartProps) {
   return (
     <Card className="h-full bg-transparent py-4">
       <CardHeader className="px-4 pb-2">
-        <CardTitle>Distribuicao por uso</CardTitle>
-        <CardDescription>Top categorias com mais transacoes vinculadas</CardDescription>
+        <CardTitle>Category Usage Distribution</CardTitle>
+        <CardDescription>Top categories with the highest linked transactions</CardDescription>
       </CardHeader>
 
       <CardContent className="flex min-h-0 flex-1 flex-col px-4 pb-4">
         {usageData.length === 0 || totalUsage === 0 ? (
           <div className="flex h-full min-h-[220px] items-center justify-center rounded-md border border-dashed text-sm text-muted-foreground">
-            Ainda sem uso registrado para o grafico.
+            No category usage available yet.
           </div>
         ) : (
           <ChartContainer config={chartConfig} className="min-h-[220px] w-full">
             <PieChart>
               <ChartTooltip content={<ChartTooltipContent nameKey="key" />} />
               <ChartLegend
+                layout="vertical"
+                align="left"
                 verticalAlign="bottom"
                 content={
                   <ChartLegendContent
                     nameKey="key"
+                    className="flex-col items-start gap-2"
                   />
                 }
               />
@@ -78,9 +86,9 @@ export function CategoriesRadialChart({ data }: CategoriesRadialChartProps) {
                 data={usageData}
                 dataKey="value"
                 nameKey="key"
-                innerRadius={54}
-                outerRadius={88}
-                strokeWidth={2}
+                innerRadius={60}
+                outerRadius={110}
+                strokeWidth={0}
               />
             </PieChart>
           </ChartContainer>

@@ -1,10 +1,7 @@
-import { CategorySavings } from "@/components/dashboard/categories-pie-chart-int";
 import { DashboardPageClient, KPIDataSource } from "./client";
-import { SavingsChartData } from "@/components/dashboard/savings-chart-int";
-import { getYearSavingsProgress } from "@/strategies/get-year-savings-progress";
-import { getWallet } from "@/strategies/get-wallet";
 import { HTTPGetWalletInfo } from "@/http/get-wallet-info";
 import { HTTPGetYearProgress } from "@/http/get-year-progress";
+import { getCategoriesMetrics } from "@/strategies/get-categories-metrics";
 import { YearProgressMapper } from "@/strategies/mappers/year-progress-mapper";
 
 // function generateSavingsChartMockData(): SavingsChartData[] {
@@ -29,31 +26,6 @@ import { YearProgressMapper } from "@/strategies/mappers/year-progress-mapper";
 //   }))
 // }
 
-function generateCategoriessavingsMockData(count = 1): CategorySavings[] {
-  const categories = [
-    "Food",
-    "Uber",
-    "Rent",
-    "Gym",
-    "Streaming",
-    "Shopping",
-    "Health",
-    "Travel",
-    "Education",
-    "Bills",
-  ]
-
-  return Array.from({ length: count }).map((_, index) => {
-    const name = categories[index % categories.length]
-
-    return {
-      category: name,
-      slug: name.toLowerCase(),
-      savings: Number((Math.random() * 1000 + 50).toFixed(2)),
-    }
-  })
-}
-
 // const kpiMock: KPIDataSource = {
 //     balance: {
 //       total: 12850.75,
@@ -73,8 +45,11 @@ function generateCategoriessavingsMockData(count = 1): CategorySavings[] {
 //   }
 
 export default async function DashboardPage() {
-  const balanceReply = await HTTPGetWalletInfo()
-  const progressReply = await HTTPGetYearProgress()
+  const [balanceReply, progressReply, categoriesMetrics] = await Promise.all([
+    HTTPGetWalletInfo(),
+    HTTPGetYearProgress(),
+    getCategoriesMetrics(),
+  ])
 
   const kpiData: KPIDataSource = {
     ...YearProgressMapper.toKpiCards(progressReply),
@@ -86,7 +61,7 @@ export default async function DashboardPage() {
   const datas = {
     kpis: kpiData,
     savingsChart: YearProgressMapper.toSavingsChart(progressReply),
-    categoriesSavings: generateCategoriessavingsMockData(),
+    categoriesMetrics,
   }
 
   return (

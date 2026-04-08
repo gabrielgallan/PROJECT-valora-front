@@ -2,7 +2,7 @@
 
 import { KPICards } from "@/components/dashboard/kpi-cards";
 import { SavingsChartData, SavingsChartInteractive } from "@/components/dashboard/savings-chart-int";
-import { CategoriesPieChartInteractive, CategorySavings } from "@/components/dashboard/categories-pie-chart-int";
+import { CategoriesPieChartInteractive, CategoryMetrics } from "@/components/dashboard/categories-pie-chart-int";
 
 export interface KPIDataSource {
     balance: {
@@ -22,11 +22,11 @@ export interface KPIDataSource {
     }
 }
 
-interface DashboardPageClientProps {
+export interface DashboardPageClientProps {
     datas: {
         kpis: KPIDataSource
         savingsChart: SavingsChartData[]
-        categoriesSavings: CategorySavings[]
+        categoriesMetrics: CategoryMetrics[]
     }
 }
 
@@ -43,7 +43,7 @@ export function DashboardPageClient({ datas }: DashboardPageClientProps) {
                 </section>
 
                 <section className="min-h-0 lg:col-span-5 lg:row-start-1 lg:min-h-0">
-                    <CategoriesPieChartInteractive data={datas.categoriesSavings} />
+                    <CategoriesPieChartInteractive data={datas.categoriesMetrics} />
                 </section>
             </div>
         </div>

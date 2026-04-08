@@ -3,7 +3,7 @@
 import type { Table } from "@tanstack/react-table"
 import { ChevronsLeft, ChevronsRight } from "lucide-react"
 
-import type { Category } from "@/components/categories/types"
+import type { CategoryTableRow } from "@/components/categories/categories-data-table/categories-data-table"
 import { Button } from "@/components/ui/button"
 import { Field, FieldLabel } from "@/components/ui/field"
 import {
@@ -16,7 +16,7 @@ import {
 import { Select, SelectContent, SelectGroup, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 
 type CategoriesDataTablePaginationProps = {
-  table: Table<Category>
+  table: Table<CategoryTableRow>
 }
 
 const pageSizeOptions = [10, 20, 30, 50]
@@ -27,11 +27,11 @@ export function CategoriesDataTablePagination({ table }: CategoriesDataTablePagi
 
   return (
     <div className="flex flex-col gap-3 border-t px-2 py-3 sm:flex-row sm:items-center sm:justify-between">
-      <p className="text-sm text-muted-foreground">{filteredRows} categoria(s) encontrada(s).</p>
+      <p className="text-sm text-muted-foreground">{filteredRows} category(ies) found.</p>
 
       <div className="flex flex-wrap items-center justify-end gap-3">
         <Field orientation="horizontal" className="w-fit">
-          <FieldLabel htmlFor="rows-per-page-categories">Linhas por pagina</FieldLabel>
+          <FieldLabel htmlFor="rows-per-page-categories">Rows per page</FieldLabel>
           <Select
             value={`${table.getState().pagination.pageSize}`}
             onValueChange={(value) => table.setPageSize(Number(value))}
@@ -52,7 +52,7 @@ export function CategoriesDataTablePagination({ table }: CategoriesDataTablePagi
         </Field>
 
         <div className="text-sm text-muted-foreground">
-          Pagina {table.getState().pagination.pageIndex + 1} de {table.getPageCount() || 1}
+          Page {table.getState().pagination.pageIndex + 1} of {table.getPageCount() || 1}
         </div>
 
         <div className="flex items-center gap-1">
@@ -62,7 +62,7 @@ export function CategoriesDataTablePagination({ table }: CategoriesDataTablePagi
             className="size-8"
             onClick={() => table.setPageIndex(0)}
             disabled={!table.getCanPreviousPage()}
-            aria-label="Ir para primeira pagina"
+            aria-label="Go to first page"
           >
             <ChevronsLeft data-icon="inline-start" />
           </Button>
@@ -101,7 +101,7 @@ export function CategoriesDataTablePagination({ table }: CategoriesDataTablePagi
             className="size-8"
             onClick={() => table.setPageIndex(lastPageIndex)}
             disabled={!table.getCanNextPage()}
-            aria-label="Ir para ultima pagina"
+            aria-label="Go to last page"
           >
             <ChevronsRight data-icon="inline-start" />
           </Button>
