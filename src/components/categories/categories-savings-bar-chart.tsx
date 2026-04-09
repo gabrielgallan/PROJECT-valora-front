@@ -11,6 +11,7 @@ import {
 } from "@/components/ui/chart"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "../ui/select"
 import { useState } from "react"
+import { CategoryMetrics } from "@/strategies/get-categories-metrics"
 
 const categoriesSavingsChartConfig = {
   metric: {
@@ -25,16 +26,9 @@ function isDataType(value: string): value is DataType {
   return value === "expenses" || value === "incomes" || value === "savings"
 }
 
-export interface CategorySavingsDatum {
-  category: string
-  incomes: number
-  expenses: number
-  savings: number
-}
-
 interface CategoriesSavingsBarChartProps {
   month: string
-  data: CategorySavingsDatum[]
+  data: CategoryMetrics[]
 }
 
 export function CategoriesSavingsBarChart({ month, data }: CategoriesSavingsBarChartProps) {
@@ -48,7 +42,7 @@ export function CategoriesSavingsBarChart({ month, data }: CategoriesSavingsBarC
 
   const formatted = data.map(c => {
     return {
-      category: c.category,
+      category: c.name,
       metric: c[dataType]
     }
   })

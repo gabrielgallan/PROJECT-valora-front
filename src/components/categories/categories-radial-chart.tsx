@@ -12,16 +12,17 @@ import {
   ChartTooltipContent,
   type ChartConfig,
 } from "@/components/ui/chart"
+import { CategoryMetrics } from "@/strategies/get-categories-metrics"
 
 type CategoriesRadialChartProps = {
-  data: CategoriesRadialChartDatum[]
+  data: CategoryMetrics[]
 }
 
-export interface CategoriesRadialChartDatum {
-  name: string
-  slug: string
-  usageCount: number
-}
+// export interface CategoriesRadialChartDatum {
+//   name: string
+//   slug: string
+//   usageCount: number
+// }
 
 const chartColors = [
   "var(--theme-100)",

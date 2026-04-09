@@ -26,7 +26,7 @@ export function CategoriesDataTablePagination({ table }: CategoriesDataTablePagi
   const lastPageIndex = Math.max(0, table.getPageCount() - 1)
 
   return (
-    <div className="flex flex-col gap-3 border-t px-2 py-3 sm:flex-row sm:items-center sm:justify-between">
+    <div className="flex flex-col gap-3 py-2 sm:flex-row sm:items-center sm:justify-between">
       <p className="text-sm text-muted-foreground">{filteredRows} category(ies) found.</p>
 
       <div className="flex flex-wrap items-center justify-end gap-3">

@@ -24,14 +24,9 @@ import {
     SelectTrigger,
     SelectValue,
 } from "@/components/ui/select"
+import { CategoryMetrics } from "@/strategies/get-categories-metrics"
 
 export const description = "A dynamic savings by categories pie chart"
-
-export type CategoryMetrics = {
-    category: string
-    slug: string
-    expenses: number
-}
 
 type ChartDataItem = CategoryMetrics & {
     fill: string
@@ -62,7 +57,7 @@ function buildChartData(categories: CategoryMetrics[]): ChartDataItem[] {
     return categories.map((item, index) => ({
         ...item,
         fill: themeColors[index % themeColors.length],
-    }))
+    })).sort((a, b) => b.expenses - a.expenses)
 }
 
 function buildChartConfig(categories: CategoryMetrics[]): ChartConfig {
@@ -76,7 +71,7 @@ function buildChartConfig(categories: CategoryMetrics[]): ChartConfig {
         const key = item.slug
 
         config[key] = {
-            label: item.category,
+            label: item.name,
             color: themeColors[index % themeColors.length],
         }
     })
@@ -97,16 +92,16 @@ export function CategoriesPieChartInteractive({
     const chartConfig = React.useMemo(() => buildChartConfig(data), [data])
 
     const categories = React.useMemo(
-        () => chartData.map((item) => item.category),
+        () => chartData.map((item) => item.name),
         [chartData]
     )
 
     const [activeCategory, setActiveCategory] = React.useState<CategoryKey>(
-        chartData[0]?.category ?? ""
+        chartData[0]?.name ?? ""
     )
 
     const activeIndex = React.useMemo(
-        () => chartData.findIndex((item) => item.category === activeCategory),
+        () => chartData.findIndex((item) => item.name === activeCategory),
         [chartData, activeCategory]
     )
 
@@ -116,7 +111,7 @@ export function CategoriesPieChartInteractive({
         (props: CustomPieShapeProps) => {
             const { outerRadius = 0, innerRadius = 0, ...rest } = props
 
-            const isActive = props.payload?.category === activeCategory
+            const isActive = props.payload?.name === activeCategory
 
             if (isActive) {
                 return (
@@ -257,7 +252,7 @@ export function CategoriesPieChartInteractive({
                                                 y={viewBox.cy + 15}
                                                 className="fill-muted-foreground text-sm"
                                             >
-                                                {activeItem?.category ?? "Category"}
+                                                {activeItem?.name ?? "Category"}
                                             </tspan>
                                         </text>
                                     )

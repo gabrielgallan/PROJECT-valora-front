@@ -1,7 +1,7 @@
 "use client"
 
 import type { Table } from "@tanstack/react-table"
-import { ChevronDown, SlidersHorizontal, X } from "lucide-react"
+import { ChevronDown, Plus, SlidersHorizontal, X } from "lucide-react"
 
 import type { CategoryTableRow } from "@/components/categories/categories-data-table/categories-data-table"
 import { Button } from "@/components/ui/button"
@@ -18,6 +18,7 @@ type CategoriesDataTableToolbarProps = {
   search: string
   onSearchChange: (search: string) => void
   onResetFilters: () => void
+  onCreateClick: () => void
 }
 
 export function CategoriesDataTableToolbar({
@@ -25,6 +26,7 @@ export function CategoriesDataTableToolbar({
   search,
   onSearchChange,
   onResetFilters,
+  onCreateClick,
 }: CategoriesDataTableToolbarProps) {
   const hasActiveFilters = search.trim().length > 0
 
@@ -47,6 +49,24 @@ export function CategoriesDataTableToolbar({
       </div>
 
       <div className="flex flex-wrap items-center justify-end gap-2">
+        <Button onClick={onCreateClick} className="group relative flex items-center px-3 pr-3 hover:pr-32 transition-all duration-300 overflow-hidden">
+          <Plus />
+
+          <span
+            className="
+                            absolute left-8
+                            opacity-0
+                            translate-x-[-10px]
+                            whitespace-nowrap
+                            transition-all duration-300 ease-out
+                            group-hover:opacity-100
+                            group-hover:translate-x-0
+                          "
+          >
+            New Category
+          </span>
+        </Button>
+
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
             <Button variant="outline" className="h-9 bg-transparent dark:bg-transparent">

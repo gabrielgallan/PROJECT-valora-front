@@ -1,11 +1,18 @@
 "use client"
 
-import { ArrowUpDown } from "lucide-react"
-import { formatDistanceToNow } from "date-fns"
+import { ArrowUpDown, MoreHorizontal } from "lucide-react"
 import type { ColumnDef } from "@tanstack/react-table"
 
 import type { CategoryTableRow } from "@/components/categories/categories-data-table/categories-data-table"
 import { Button } from "@/components/ui/button"
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu"
 
 type SortableHeaderProps = {
   title: string
@@ -21,11 +28,15 @@ function SortableHeader({ title, onClick }: SortableHeaderProps) {
   )
 }
 
-function getUpdatedAtDate(value: Date | string) {
-  return value instanceof Date ? value : new Date(value)
+type CategoriesDataTableColumnsOptions = {
+  onEdit: (category: CategoryTableRow) => void
+  onDelete: (category: CategoryTableRow) => void
 }
 
-export function categoriesDataTableColumns(): ColumnDef<CategoryTableRow>[] {
+export function categoriesDataTableColumns({
+  onEdit,
+  onDelete,
+}: CategoriesDataTableColumnsOptions): ColumnDef<CategoryTableRow>[] {
   return [
     {
       accessorKey: "name",
@@ -48,6 +59,24 @@ export function categoriesDataTableColumns(): ColumnDef<CategoryTableRow>[] {
       cell: ({ row }) => <span className="text-muted-foreground">{row.original.slug}</span>,
     },
     {
+      accessorKey: "description",
+      header: ({ column }) => (
+        <SortableHeader
+          title="Description"
+          onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
+        />
+      ),
+      cell: ({ row }) => {
+        const description = row.original.description?.trim() || "-"
+
+        return (
+          <div className="max-w-[22rem] truncate text-muted-foreground" title={description}>
+            {description}
+          </div>
+        )
+      },
+    },
+    {
       accessorKey: "usageCount",
       header: ({ column }) => (
         <div className="text-right">
@@ -60,27 +89,31 @@ export function categoriesDataTableColumns(): ColumnDef<CategoryTableRow>[] {
       cell: ({ row }) => <p className="text-right font-medium">{row.original.usageCount}</p>,
     },
     {
-      accessorKey: "updatedAt",
-      sortingFn: (rowA, rowB, columnId) => {
-        const left = getUpdatedAtDate(rowA.getValue(columnId) as Date | string).getTime()
-        const right = getUpdatedAtDate(rowB.getValue(columnId) as Date | string).getTime()
-        return left - right
-      },
-      header: ({ column }) => (
-        <div className="text-right">
-          <SortableHeader
-            title="Updated"
-            onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
-          />
-        </div>
-      ),
+      id: "actions",
+      enableHiding: false,
+      header: "",
       cell: ({ row }) => {
-        const date = getUpdatedAtDate(row.original.updatedAt)
+        const category = row.original
 
         return (
-          <span className="block text-right text-muted-foreground">
-            {formatDistanceToNow(date, { addSuffix: true })}
-          </span>
+          <div className="flex justify-end">
+            <DropdownMenu>
+              <DropdownMenuTrigger asChild>
+                <Button variant="ghost" className="size-8 p-0">
+                  <span className="sr-only">Open menu</span>
+                  <MoreHorizontal />
+                </Button>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent align="end">
+                <DropdownMenuLabel>Actions</DropdownMenuLabel>
+                <DropdownMenuItem onClick={() => onEdit(category)}>Edit</DropdownMenuItem>
+                <DropdownMenuSeparator />
+                <DropdownMenuItem variant="destructive" onClick={() => onDelete(category)}>
+                  Delete
+                </DropdownMenuItem>
+              </DropdownMenuContent>
+            </DropdownMenu>
+          </div>
         )
       },
     },

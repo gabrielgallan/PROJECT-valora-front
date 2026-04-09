@@ -2,7 +2,8 @@
 
 import { KPICards } from "@/components/dashboard/kpi-cards";
 import { SavingsChartData, SavingsChartInteractive } from "@/components/dashboard/savings-chart-int";
-import { CategoriesPieChartInteractive, CategoryMetrics } from "@/components/dashboard/categories-pie-chart-int";
+import { CategoriesPieChartInteractive } from "@/components/dashboard/categories-pie-chart-int";
+import { CategoryMetrics } from "@/strategies/get-categories-metrics";
 
 export interface KPIDataSource {
     balance: {
