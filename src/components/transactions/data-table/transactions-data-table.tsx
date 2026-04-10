@@ -24,15 +24,19 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import { Transaction } from "@/http/types/transaction";
-import { Button } from "../../ui/button";
-import { Plus } from "lucide-react";
 
 type TransactionsDataTableProps = {
   data: Transaction[];
 };
 
-function getCreatedAtDate(value: Date | string) {
-  return value instanceof Date ? value : new Date(value);
+function getCreatedAtDate(value: string) {
+  const parsedDate = new Date(value);
+
+  if (Number.isNaN(parsedDate.getTime())) {
+    return null;
+  }
+
+  return parsedDate;
 }
 
 export function TransactionsDataTable({ data }: TransactionsDataTableProps) {
@@ -46,6 +50,10 @@ export function TransactionsDataTable({ data }: TransactionsDataTableProps) {
   const filteredData = React.useMemo(() => {
     return data.filter((transaction) => {
       const transactionDate = getCreatedAtDate(transaction.createdAt);
+
+      if (!transactionDate) {
+        return false;
+      }
 
       if (fromDate && transactionDate < fromDate) {
         return false;

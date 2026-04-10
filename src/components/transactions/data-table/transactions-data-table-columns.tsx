@@ -31,8 +31,14 @@ function SortableHeader({ title, onClick }: SortableHeaderProps) {
   );
 }
 
-function getCreatedAtDate(value: Date | string) {
-  return value instanceof Date ? value : new Date(value);
+function getCreatedAtDate(value: string) {
+  const parsedDate = new Date(value);
+
+  if (Number.isNaN(parsedDate.getTime())) {
+    return null;
+  }
+
+  return parsedDate;
 }
 
 export const transactionsDataTableColumns: ColumnDef<Transaction>[] = [
@@ -78,7 +84,7 @@ export const transactionsDataTableColumns: ColumnDef<Transaction>[] = [
       />
     ),
     cell: ({ row }) => {
-      const categoryLabel = row.original.category?.name ?? "Sem categoria";
+      const categoryLabel = row.original.category?.name ?? "Uncategorized";
       return <span className="text-muted-foreground">{categoryLabel}</span>;
     },
   },
@@ -138,8 +144,11 @@ export const transactionsDataTableColumns: ColumnDef<Transaction>[] = [
   {
     accessorKey: "createdAt",
     sortingFn: (rowA, rowB, columnId) => {
-      const left = getCreatedAtDate(rowA.getValue(columnId) as Date | string).getTime();
-      const right = getCreatedAtDate(rowB.getValue(columnId) as Date | string).getTime();
+      const leftDate = getCreatedAtDate(rowA.getValue(columnId) as string);
+      const rightDate = getCreatedAtDate(rowB.getValue(columnId) as string);
+      const left = leftDate ? leftDate.getTime() : 0;
+      const right = rightDate ? rightDate.getTime() : 0;
+
       return left - right;
     },
     header: ({ column }) => (
@@ -151,7 +160,12 @@ export const transactionsDataTableColumns: ColumnDef<Transaction>[] = [
       </div>
     ),
     cell: ({ row }) => {
-      const date = getCreatedAtDate(row.getValue("createdAt") as Date | string);
+      const date = getCreatedAtDate(row.getValue("createdAt") as string);
+
+      if (!date) {
+        return <div className="text-right text-muted-foreground">-</div>;
+      }
+
       return <div className="text-right text-muted-foreground">{differenceInDays(new Date(), date)} days ago</div>;
     },
   },

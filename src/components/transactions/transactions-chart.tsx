@@ -37,41 +37,33 @@ const transactionsChartConfig = {
     },
 } satisfies ChartConfig;
 
-interface TransactionChartData {
+export interface TransactionChartData {
     date: string
     expense: number
     income: number
 }
 
 interface TransactionsChartProps {
-    // data: TransactionChartData[];
-    month: string;
+    data: TransactionChartData[];
 }
 
-const mockData = [
-    { date: "April 2025", income: 720, expense: 560 },
-    { date: "May 2025", income: 770, expense: 590 },
-    { date: "June 2025", income: 800, expense: 620 },
-    { date: "July 2025", income: 940, expense: 850 },
-    { date: "August 2025", income: 880, expense: 690 },
-    { date: "September 2025", income: 920, expense: 780 },
-    { date: "October 2025", income: 870, expense: 640 },
-    { date: "November 2025", income: 950, expense: 700 },
-    { date: "December 2025", income: 1100, expense: 980 },
-    { date: "January 2026", income: 900, expense: 720 },
-    { date: "February 2026", income: 760, expense: 610 },
-    { date: "March 2026", income: 820, expense: 540 },
-];
-
-export function TransactionsChart({ month }: TransactionsChartProps) {
+export function TransactionsChart({ data }: TransactionsChartProps) {
     const [timeRange, setTimeRange] = React.useState("6")
 
-    let filteredData = mockData
+    let filteredData = data
 
     if (timeRange === "3") {
-        filteredData = mockData.slice(9, 12)
+        filteredData = data.slice(9, 12)
     } else if (timeRange === "6") {
-        filteredData = mockData.slice(6, 12)
+        filteredData = data.slice(6, 12)
+    }
+
+    function makeCardDescription(timeRange: string) {
+        switch (timeRange) {
+            case '3': return 'Last 3 months metrics progress'
+            case '6': return 'Last 6 months metrics progress'
+            case '12': return 'Last year metrics progress'
+        }
     }
 
     return (
@@ -79,7 +71,7 @@ export function TransactionsChart({ month }: TransactionsChartProps) {
             <CardHeader className="flex gap-1 px-4 pb-0">
                 <div>
                     <CardTitle>Transactions</CardTitle>
-                    <CardDescription>{month}</CardDescription>
+                    <CardDescription>{makeCardDescription(timeRange)}</CardDescription>
                 </div>
                 <Select value={timeRange} onValueChange={setTimeRange}>
                     <SelectTrigger
@@ -110,9 +102,9 @@ export function TransactionsChart({ month }: TransactionsChartProps) {
                         <CartesianGrid vertical={false} />
                         <XAxis
                             dataKey="date"
-                            tickLine={true}
-                            axisLine={true}
-                            tickMargin={20}
+                            tickLine={false}
+                            axisLine={false}
+                            tickMargin={15}
                             tickFormatter={(value) => {
                                 const [month, year] = value.split(' ')
 

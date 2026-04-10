@@ -1,5 +1,7 @@
 import { KPIDataSource } from "@/components/dashboard/kpi-cards";
 import { SavingsChartData } from "@/components/dashboard/savings-chart-int";
+import { TransactionChartData } from "@/components/transactions/transactions-chart";
+import { TransactionsCountRadarChartData } from "@/components/transactions/transactions-count-radar-chart";
 import { HTTPGetYearProgressResponse } from "@/http/get-year-progress";
 import { format } from "date-fns"
 import { enUS } from "date-fns/locale"
@@ -49,5 +51,26 @@ export class YearProgressMapper {
                 percent: calculateGrowth(currentSavingRate, lastMonthSavingRate)
             }
         }
+    }
+
+    static toTransactionsChart(data: HTTPGetYearProgressResponse): TransactionChartData[] {
+        return data.progress.months.map(m => {
+            return {
+                date: `${getMonthName(m.monthIndex)} ${m.year}`,
+                expense: m.summary.totals.expense,
+                income: m.summary.totals.income,
+            }
+        })
+    }
+
+    static toTransactionsCountChart(data: HTTPGetYearProgressResponse): TransactionsCountRadarChartData[] {
+        const lastSixMonths = data.progress.months.slice(6, 12)
+
+        return lastSixMonths.map(m => {
+            return {
+                month: getMonthName(m.monthIndex),
+                transactions: m.summary.counts.transactions
+            }
+        })
     }
 }

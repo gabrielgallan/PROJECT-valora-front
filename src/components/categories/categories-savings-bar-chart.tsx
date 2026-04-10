@@ -12,6 +12,7 @@ import {
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "../ui/select"
 import { useState } from "react"
 import { CategoryMetrics } from "@/strategies/get-categories-metrics"
+import { getCurrentMonthYear } from "@/utils/get-current-month-year-string"
 
 const categoriesSavingsChartConfig = {
   metric: {
@@ -20,18 +21,17 @@ const categoriesSavingsChartConfig = {
   },
 } satisfies ChartConfig
 
-type DataType = "expenses" | "incomes" | "savings"
+type DataType = "expenses" | "incomes"
 
 function isDataType(value: string): value is DataType {
-  return value === "expenses" || value === "incomes" || value === "savings"
+  return value === "expenses" || value === "incomes"
 }
 
 interface CategoriesSavingsBarChartProps {
-  month: string
   data: CategoryMetrics[]
 }
 
-export function CategoriesSavingsBarChart({ month, data }: CategoriesSavingsBarChartProps) {
+export function CategoriesSavingsBarChart({ data }: CategoriesSavingsBarChartProps) {
   const [dataType, setDataType] = useState<DataType>("expenses")
 
   const handleDataTypeChange = (value: string) => {
@@ -54,7 +54,7 @@ export function CategoriesSavingsBarChart({ month, data }: CategoriesSavingsBarC
       <CardHeader className="flex px-4">
         <div className="flex flex-col gap-2">
           <CardTitle>Savings by Category</CardTitle>
-          <CardDescription>{month}</CardDescription>
+          <CardDescription>{getCurrentMonthYear()}</CardDescription>
         </div>
 
         <Select value={dataType} onValueChange={handleDataTypeChange}>
@@ -70,9 +70,6 @@ export function CategoriesSavingsBarChart({ month, data }: CategoriesSavingsBarC
             </SelectItem>
             <SelectItem value="incomes" className="rounded-lg">
               Incomes
-            </SelectItem>
-            <SelectItem value="savings" className="rounded-lg">
-              Savings
             </SelectItem>
           </SelectContent>
         </Select>

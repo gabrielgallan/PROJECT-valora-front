@@ -7,7 +7,6 @@ import {
   XAxis,
   YAxis,
 } from "recharts";
-
 import {
   Card,
   CardContent,
@@ -142,22 +141,4 @@ export function SavingsChartInteractive({ data }: SavingsChartInteractiveProps) 
       </CardContent>
     </Card>
   );
-}
-
-const mock = {
-  balance: {
-    total: 4230.75,
-  },
-  savingRate: {
-    value: 0.31,
-    percent: 0.6
-  },
-  income: {
-    total: 2150,
-    percent: 0.12
-  },
-  expense: {
-    total: 1480.2,
-    percent: -0.04
-  }
 }

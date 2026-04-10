@@ -11,5 +11,5 @@ export default async function CategoriesPage() {
     }
   })
 
-  return <CategoriesPageClient data={data} rows={rows} monthLabel="April 2026" />
+  return <CategoriesPageClient data={data} rows={rows} />
 }

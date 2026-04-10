@@ -13,15 +13,14 @@ import { CategoryMetrics } from "@/strategies/get-categories-metrics"
 export interface CategoriesPageClientProps {
   data: CategoryMetrics[]
   rows: CategoryTableRow[]
-  monthLabel: string
 }
 
-export function CategoriesPageClient({ rows, data, monthLabel }: CategoriesPageClientProps) {
+export function CategoriesPageClient({ rows, data }: CategoriesPageClientProps) {
   return (
     <div className="@container/main flex min-h-0 flex-1 flex-col">
       <div className="grid min-h-0 flex-1 grid-cols-1 grid-rows-2 gap-4 p-4 md:p-6 lg:grid-cols-12 lg:grid-rows-[24rem_minmax(0,1fr)]">
         <section className="min-h-0 overflow-hidden lg:col-span-7 lg:row-start-1">
-          <CategoriesSavingsBarChart month={monthLabel} data={data} />
+          <CategoriesSavingsBarChart data={data} />
         </section>
 
         <section className="min-h-0 overflow-hidden lg:col-span-5 lg:row-start-1">

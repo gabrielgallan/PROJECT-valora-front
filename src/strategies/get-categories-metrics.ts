@@ -59,6 +59,6 @@ export async function getCategoriesMetrics(): Promise<CategoryMetrics[]> {
             console.error(err)
         }
 
-        throw err
+        return []
     }
 }
