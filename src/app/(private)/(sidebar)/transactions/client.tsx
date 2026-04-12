@@ -10,7 +10,7 @@ import { type CategoryItem } from "@/http/list-categories";
 import { type TransactionItem } from "@/http/list-transactions";
 import { YearProgressMapper } from "@/strategies/mappers/year-progress-mapper";
 
-import { listTransctionsAction } from "./actions";
+import { createTransactionAction, listTransctionsAction } from "./actions";
 import { type TransactionsFilters } from "./types";
 
 interface TransactionsPageClientProps {
@@ -85,6 +85,7 @@ export default function TransactionsPageClient({
                     <TransactionsDataTable
                         data={{ transactions, categories }}
                         onFiltersChange={handleFiltersChange}
+                        createAction={createTransactionAction}
                         isLoading={isPending}
                     />
 

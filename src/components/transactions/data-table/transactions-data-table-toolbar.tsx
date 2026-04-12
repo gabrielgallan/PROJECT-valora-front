@@ -22,7 +22,6 @@ import {
 } from "@/components/ui/select";
 import { CategoryItem } from "@/http/list-categories";
 import { type TransactionItem } from "@/http/list-transactions";
-import { useEffect } from "react";
 
 type TransactionsDataTableToolbarProps = {
   table: Table<TransactionItem>;
@@ -33,6 +32,7 @@ type TransactionsDataTableToolbarProps = {
   onCategoryChange: (value: string) => void;
   onDateRangeChange: (range?: DateRange) => void;
   onResetFilters: () => void;
+  onCreateClick: () => void;
 };
 
 export function TransactionsDataTableToolbar({
@@ -44,6 +44,7 @@ export function TransactionsDataTableToolbar({
   onCategoryChange,
   onDateRangeChange,
   onResetFilters,
+  onCreateClick,
 }: TransactionsDataTableToolbarProps) {
   const hasFilters = categorySelected !== "all" || Boolean(dateRange?.from || dateRange?.to);
 
@@ -85,7 +86,10 @@ export function TransactionsDataTableToolbar({
         ) : null}
       </div>
 
-      <Button className="group relative flex items-center px-3 pr-3 hover:pr-32 transition-all duration-300 overflow-hidden">
+      <Button
+        onClick={onCreateClick}
+        className="group relative flex items-center px-3 pr-3 hover:pr-32 transition-all duration-300 overflow-hidden"
+      >
         <Plus />
 
         <span className="absolute left-8 opacity-0 translate-x-[-10px] whitespace-nowrap transition-all duration-300 ease-out group-hover:opacity-100 group-hover:translate-x-0">

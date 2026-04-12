@@ -14,7 +14,7 @@ export default async function TransactionsPage() {
   return (
     <TransactionsPageClient
       progress={progress}
-      _transactions={[]}
+      _transactions={transactions}
       categories={categories}
     />
   );
