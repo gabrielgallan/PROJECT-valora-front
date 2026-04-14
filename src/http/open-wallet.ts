@@ -1,19 +1,19 @@
-import { api } from './api-client'
+import { api } from "./api-client";
 
 type HTTPOpenWalletRequest = {
-    initialBalance: number
-}
+  body: {
+    balance: number;
+  };
+};
 
-type HTTPOpenWalletResponse = null
+type HTTPOpenWalletResponse = null;
 
-export async function HTTPOpenWallet({
-    initialBalance
-}: HTTPOpenWalletRequest) {
-    const result = await api
-        .post('api/wallets', {
-            json: { initialBalance }
-        })
-        .json<HTTPOpenWalletResponse>()
+export async function HTTPOpenWallet({ body }: HTTPOpenWalletRequest) {
+  const result = await api
+    .post("api/wallets", {
+      json: body,
+    })
+    .json<HTTPOpenWalletResponse>();
 
-    return result
+  return result;
 }

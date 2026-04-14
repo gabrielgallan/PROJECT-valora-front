@@ -1,18 +1,20 @@
-import { getWallet } from "@/strategies/get-wallet"
-import { redirect } from "next/navigation"
+import { verifyHasWallet } from "@/strategies/verify-has-wallet";
+import { redirect } from "next/navigation";
 
 export default async function NewAccountLayout({
-    children,
+  children,
 }: Readonly<{
-    children: React.ReactNode
+  children: React.ReactNode;
 }>) {
-    const wallet = await getWallet()
+  const hasWallet = await verifyHasWallet();
 
-    if (wallet) {
-        redirect('/dashboard')
-    }
+  if (hasWallet) {
+    redirect("/dashboard");
+  }
 
-    return (
-        <>{children}</>
-    )
+  return (
+    <div className="flex min-h-screen flex-col items-center justify-center px-4">
+      <div className="w-full max-w-xs">{children}</div>
+    </div>
+  );
 }

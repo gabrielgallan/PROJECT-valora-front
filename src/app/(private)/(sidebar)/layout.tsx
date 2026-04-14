@@ -2,13 +2,21 @@ import { AppSidebar } from "@/components/app-sidebar";
 import { SiteHeader } from "@/components/header";
 import { SidebarInset, SidebarProvider } from "@/components/ui/sidebar";
 import { currentUser } from "@/strategies/current-user";
+import { verifyHasWallet } from "@/strategies/verify-has-wallet";
 import { getUserInitials } from "@/utils/get-user-initials";
+import { redirect } from "next/navigation";
 
 type AppLayoutProps = {
   children: React.ReactNode;
 };
 
 export default async function PrivateLayout({ children }: AppLayoutProps) {
+  const hasWallet = await verifyHasWallet();
+
+  if (!hasWallet) {
+    redirect("/new");
+  }
+
   const { user } = await currentUser();
 
   const initials = getUserInitials({

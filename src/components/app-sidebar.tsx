@@ -4,7 +4,7 @@ import {
   Icon,
   IconChartLine,
   IconInnerShadowTop,
-  IconSettings,
+  IconUserCircle,
   IconArrowsDiff,
   IconChartPie2Filled,
   IconDatabase,
@@ -44,11 +44,6 @@ const sidebarData = {
       url: "/dashboard",
       icon: IconChartLine,
     },
-    // {
-    //   title: "Analytics",
-    //   url: "/analytics",
-    //   icon: IconHomeSearch,
-    // },
     {
       title: "Transactions",
       url: "/transactions",
@@ -62,9 +57,9 @@ const sidebarData = {
   ],
   secondary: [
     {
-      title: "Settings",
-      url: "/settings",
-      icon: IconSettings,
+      title: "Account",
+      url: "/account",
+      icon: IconUserCircle,
     },
   ],
   documents: [
