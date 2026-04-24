@@ -6,6 +6,8 @@ const publicRoutes = [
   { path: "/", whenAuthenticated: "next" },
   { path: "/auth/sign-in", whenAuthenticated: "redirect" },
   { path: "/auth/sign-up", whenAuthenticated: "redirect" },
+  { path: "/auth/forgot-password", whenAuthenticated: "next" },
+  { path: "/auth/reset-password", whenAuthenticated: "next" },
 ] as const;
 
 const redirectWhenNotAuthenticatedRoute = "/auth/sign-in";
